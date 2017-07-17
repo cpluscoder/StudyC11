@@ -7,6 +7,7 @@
 #include "StudyC11Dlg.h"
 #include "afxdialogex.h"
 #include "TestLib.h"
+#include "RValueReferences.h"
 
 #ifdef _DEBUG
 #define new DEBUG_NEW
@@ -160,4 +161,8 @@ void CStudyC11Dlg::OnBnClickedBtnTest()
 	// TODO: 在此添加控件通知处理程序代码
 	CTestLib::Pointer pTestLib = CTestLib::Create();
 	pTestLib->Test();
+	pTestLib->nullptrTest();
+
+	CRValueReferences::Pointer pRValueReferences = CRValueReferences::Create();
+	pRValueReferences->Test();
 }

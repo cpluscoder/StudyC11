@@ -22,3 +22,8 @@
 #include <stdint.h>
 #pragma warning (pop)
 #endif
+
+/// http://www.cppstdlib.com/code/toc.html
+/// http://www.cppstdlib.com/code/idx.html
+
+

@@ -27,12 +27,18 @@
     <ClInclude Include="..\Include\TestLib01.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="..\Include\RValueReferences.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="TestLib01.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="RValueReferences.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>

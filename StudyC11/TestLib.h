@@ -11,6 +11,11 @@ public:
 
 	bool Test(void);
 
+	void nullptrTest(void);
+
+	void TestRVReferences();
+
+		
 protected:
 	explicit CTestLib(void);
 };
