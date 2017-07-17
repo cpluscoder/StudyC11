@@ -13,3 +13,12 @@
 
 // TODO: 在此处引用程序需要的其他头文件
 #include <Windows.h>
+
+//禁用宏定义重复警报
+#ifdef _MSC_VER
+#pragma warning (push)
+#pragma warning (disable : 4005)
+#include <intsafe.h>	//warning C4005: “UINT32_MAX”: 宏重定义
+#include <stdint.h>
+#pragma warning (pop)
+#endif

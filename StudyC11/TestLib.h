@@ -1,12 +1,17 @@
 #pragma once
 
+#include <CommonDef.h>
 
 class CTestLib
 {
+	DEFINE_BOOST_SHARED_PTR(CTestLib)
 public:
-	CTestLib(void);
+
 	virtual ~CTestLib(void);
 
 	bool Test(void);
+
+protected:
+	explicit CTestLib(void);
 };
 

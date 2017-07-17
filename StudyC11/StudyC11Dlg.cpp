@@ -158,6 +158,6 @@ HCURSOR CStudyC11Dlg::OnQueryDragIcon()
 void CStudyC11Dlg::OnBnClickedBtnTest()
 {
 	// TODO: 在此添加控件通知处理程序代码
-	CTestLib obj;
-	obj.Test();
+	CTestLib::Pointer pTestLib = CTestLib::Create();
+	pTestLib->Test();
 }
