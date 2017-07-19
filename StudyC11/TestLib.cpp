@@ -16,9 +16,10 @@ CTestLib::~CTestLib(void)
 bool CTestLib::Test(void)
 {
 	CTestLib01::Pointer pTestLib01 = CTestLib01::Create();
-	pTestLib01->Test();
 
 	pTestLib01->TestAuto();
+
+	pTestLib01->TestTuple();
 
 	return true;
 }

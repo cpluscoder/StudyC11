@@ -1,5 +1,6 @@
 #include "StdAfx.h"
 #include "TestLib01.h"
+#include <tuple>
 
 using namespace std;
 
@@ -10,14 +11,6 @@ CTestLib01::CTestLib01(void)
 
 CTestLib01::~CTestLib01(void)
 {
-}
-
-
-bool CTestLib01::Test(void)
-{
-	OutputDebugString("CTestLib01::Test\n");
-
-	return true;
 }
 
 double ReturnDouble(void)
@@ -154,3 +147,28 @@ void CTestLib01::TestAuto(void)
 	auto nTemp = add11(x, y);
 }
 
+void CTestLib01::TestTuple(void)
+{
+	typedef std::tuple<int, string, double> TupleType;
+	std::tuple<int, string, double> tuple1(0, "0", 0.0);
+	std::tuple<int, string, double> tuple2(1, "1", 1.1);
+
+	int nTemp = 0;
+	string strTemp;
+	strTemp.clear();
+	double dbTemp = 0.0;
+	std::tie(std::ignore, strTemp, dbTemp) = tuple2;
+	strTemp = "modify";/// Ã»ÓÐÐÞ¸Ätuple2
+
+	int nTupleSize = std::tuple_size<TupleType>::value;
+	std::tuple_element<1, TupleType>::type tupleType = std::get<1>(tuple2);
+
+	std::vector<std::tuple<int, string, double>> vctTuple;
+	vctTuple.push_back(std::move(tuple1));
+	vctTuple.push_back(tuple2);
+	vctTuple.push_back(std::make_tuple(2, "2", 2.2));
+
+	OutputDebugString("CTestLib01::TestTuple\n");
+}
+
+#include <boost/tuple/tuple.hpp>

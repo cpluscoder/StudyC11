@@ -9,8 +9,6 @@ public:
 	
 	virtual ~CTestLib01(void);
 
-	bool Test(void);
-
 	/// Test nullptr
 	void Func(int nTemp)
 	{
@@ -25,7 +23,8 @@ public:
 	/// Test auto
 	void TestAuto(void);
 
-	
+	void TestTuple(void);
+
 protected:
 	explicit CTestLib01(void);
 };

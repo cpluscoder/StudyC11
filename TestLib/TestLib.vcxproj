@@ -89,12 +89,18 @@
     <None Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\Include\MyException.h" />
+    <ClInclude Include="..\Include\MyFunction.h" />
+    <ClInclude Include="..\Include\MySmartPtr.h" />
     <ClInclude Include="..\Include\RValueReferences.h" />
     <ClInclude Include="..\Include\TestLib01.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="MyException.cpp" />
+    <ClCompile Include="MyFunction.cpp" />
+    <ClCompile Include="MySmartPtr.cpp" />
     <ClCompile Include="RValueReferences.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
