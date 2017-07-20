@@ -6,6 +6,10 @@
 
 CTestLib::CTestLib(void)
 {
+	bool bBaseOf = std::is_base_of<CTestLib, CTestLibChild>::value;
+	assert(bBaseOf);
+	bBaseOf = std::is_base_of<CTestLibChild, CTestLib>::value;
+	assert(!bBaseOf);
 }
 
 

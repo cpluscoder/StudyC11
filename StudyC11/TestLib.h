@@ -20,3 +20,7 @@ protected:
 	explicit CTestLib(void);
 };
 
+class CTestLibChild : public CTestLib
+{
+
+};
