@@ -13,9 +13,8 @@ public:
 
 	void nullptrTest(void);
 
-	void TestRVReferences();
+	void TestSmartPtr(void);
 
-		
 protected:
 	explicit CTestLib(void);
 };

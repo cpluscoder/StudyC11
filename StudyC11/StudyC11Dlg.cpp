@@ -7,10 +7,6 @@
 #include "StudyC11Dlg.h"
 #include "afxdialogex.h"
 #include "TestLib.h"
-#include "RValueReferences.h"
-#include "MyException.h"
-#include "MyFunction.h"
-#include "MySmartPtr.h"
 
 #ifdef _DEBUG
 #define new DEBUG_NEW
@@ -163,25 +159,5 @@ void CStudyC11Dlg::OnBnClickedBtnTest()
 {
 	// TODO: 在此添加控件通知处理程序代码
 	CTestLib::Pointer pTestLib = CTestLib::Create();
-
-	CMySmartPtr::Pointer pMySmartPtr = CMySmartPtr::Create();
-	//pMySmartPtr->CreateSharedPtr();
-	//pMySmartPtr->DefineDeleteOperator();
-	//pMySmartPtr->DeleteArrayPtr();
-	//pMySmartPtr->WeakPtr();
-	//pMySmartPtr->SharedFromThis();
-	pMySmartPtr->TestUniquePtr();
-	pMySmartPtr->UniquePtrDeleter();
-
 	pTestLib->Test();
-	//pTestLib->nullptrTest();
-
-	CRValueReferences::Pointer pRValueReferences = CRValueReferences::Create();
-	pRValueReferences->Test();
-
-	//CMyException::Pointer pMyException = CMyException::Create();
-	//pMyException->Test();
-
-	CMyFunction::Pointer pMyFunction = CMyFunction::Create();
-	pMyFunction->Test();
 }
