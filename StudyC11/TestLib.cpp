@@ -1,7 +1,7 @@
 #include "StdAfx.h"
 #include "TestLib.h"
-#include <TestLib01.h>
 
+#include <TestLib01.h>
 #include <RValueReferences.h>
 #include <MyException.h>
 #include <MyFunction.h>
@@ -25,6 +25,10 @@ CTestLib::~CTestLib(void)
 
 bool CTestLib::Test(void)
 {
+	CMyFunction::Pointer pMyFunction = CMyFunction::Create();
+	pMyFunction->Test();
+	pMyFunction->TestFunctional();
+
 	CTestLib01::Pointer pTestLib01 = CTestLib01::Create();
 	pTestLib01->TestAuto();
 	pTestLib01->TestTuple();
@@ -37,8 +41,6 @@ bool CTestLib::Test(void)
 	CMyException::Pointer pMyException = CMyException::Create();
 	pMyException->Test();
 
-	CMyFunction::Pointer pMyFunction = CMyFunction::Create();
-	pMyFunction->Test();
 
 	nullptrTest();
 
