@@ -168,7 +168,10 @@ void CStudyC11Dlg::OnBnClickedBtnTest()
 	//pMySmartPtr->CreateSharedPtr();
 	//pMySmartPtr->DefineDeleteOperator();
 	//pMySmartPtr->DeleteArrayPtr();
-	pMySmartPtr->WeakPtr();
+	//pMySmartPtr->WeakPtr();
+	//pMySmartPtr->SharedFromThis();
+	pMySmartPtr->TestUniquePtr();
+	pMySmartPtr->UniquePtrDeleter();
 
 	pTestLib->Test();
 	//pTestLib->nullptrTest();

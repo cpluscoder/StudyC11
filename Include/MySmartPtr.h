@@ -2,27 +2,6 @@
 
 #include <CommonDef.h>
 
-class CMySmartPtr
-{
-	DEFINE_BOOST_SHARED_PTR(CMySmartPtr)
-public:
-	
-	virtual ~CMySmartPtr(void);
-
-	void CreateSharedPtr(void);
-
-	void DefineDeleteOperator(void);
-
-	void DeleteArrayPtr(void);
-
-	void WeakPtr(void);
-
-	void SharedFromThis(void);
-
-protected:
-	explicit CMySmartPtr(void);
-};
-
 class CClassForTest
 {
 public:
@@ -60,3 +39,50 @@ public:
 protected:
 	char *m_pszData;
 };
+
+class CMySmartPtr
+{
+	DEFINE_BOOST_SHARED_PTR(CMySmartPtr)
+public:
+	
+	virtual ~CMySmartPtr(void);
+
+//////////////////////////////////////////////////////////////////////////
+///	shared_ptr(共享拥有)
+	void CreateSharedPtr(void);
+
+	void DefineDeleteOperator(void);
+
+	void DeleteArrayPtr(void);
+
+	void WeakPtr(void);
+
+	void SharedFromThis(void);
+
+//////////////////////////////////////////////////////////////////////////
+///	unique_ptr(独占拥有)
+	void TestUniquePtr(void);
+
+	/// 使用场景1:接受unique_ptr的函数
+	void FuncRecvUniquePtr(std::unique_ptr<CClassForTest> pData)
+	{}
+
+	/// 使用场景2:提供unique_ptr的函数
+	std::unique_ptr<CClassForTest> FuncGenerateUniquePtr(void)
+	{
+		std::unique_ptr<CClassForTest> sp(new CClassForTest);/// sp获取新资源
+
+		/// ...
+
+		/// 不需要返回 std::move(sp), C++标准规定编译器应自动尝试使用std::move
+		return sp;///将资源所有权移交给调用者
+	}
+
+	void UniquePtrDeleter(void);
+	
+protected:
+	explicit CMySmartPtr(void);
+
+	std::unique_ptr<CClassForTest> m_pSource;/// 推荐使用, 避免引构造时分配内存失败产生异常时产生的内存泄漏
+};
+
