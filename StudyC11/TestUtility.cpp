@@ -1,12 +1,12 @@
 #include "StdAfx.h"
-#include "TestLib.h"
+#include "TestUtility.h"
 
-#include <TestLib01.h>
-#include <RValueReferences.h>
-#include <MyException.h>
-#include <MyFunction.h>
-#include <MySmartPtr.h>
-#include <MyDateTime.h>
+#include <Utility/Utility.h>
+#include <Utility/RValueReferences.h>
+#include <Utility/MyException.h>
+#include <Utility/MyFunction.h>
+#include <Utility/MySmartPtr.h>
+#include <Utility/MyDateTime.h>
 
 //////////////////////////////////////////////////////////////////////////
 /// 用于C++11与C语言版本兼容的头文件
@@ -16,29 +16,30 @@
 /// 用于C++11与C语言版本兼容的头文件
 //////////////////////////////////////////////////////////////////////////
 
-#pragma comment(lib, "TestLib.lib")
+#pragma comment(lib, "Utility.lib")
 
-CTestLib::CTestLib(void)
+CTestUtility::CTestUtility(void)
 {
-	bool bBaseOf = std::is_base_of<CTestLib, CTestLibChild>::value;
+	bool bBaseOf = std::is_base_of<CTestUtility, CTestUtilityChild>::value;
 	assert(bBaseOf);
-	bBaseOf = std::is_base_of<CTestLibChild, CTestLib>::value;
+	bBaseOf = std::is_base_of<CTestUtilityChild, CTestUtility>::value;
 	assert(!bBaseOf);
 }
 
 
-CTestLib::~CTestLib(void)
+CTestUtility::~CTestUtility(void)
 {
 }
 
-bool CTestLib::Test(void)
+bool CTestUtility::Test(void)
 {
 	CMyDateTime::Pointer pMyDateTime = CMyDateTime::Create();
 	pMyDateTime->Test();
 
-	CTestLib01::Pointer pTestLib01 = CTestLib01::Create();
-	pTestLib01->TestAuto();
-	pTestLib01->TestTuple();
+
+	CUtility::Pointer pUtility = CUtility::Create();
+	pUtility->TestAuto();
+	pUtility->TestTuple();
 
 	TestSmartPtr();
 
@@ -58,22 +59,22 @@ bool CTestLib::Test(void)
 	return true;
 }
 
-void CTestLib::nullptrTest(void)
+void CTestUtility::nullptrTest(void)
 {
-	CTestLib01::Pointer pTestLib01 = CTestLib01::Create();
+	CUtility::Pointer pUtility = CUtility::Create();
 
 	/// Call int
-	pTestLib01->Func(1);
-	pTestLib01->Func(0);
-	pTestLib01->Func(NULL);/// 模糊的参数匹配
+	pUtility->Func(1);
+	pUtility->Func(0);
+	pUtility->Func(NULL);/// 模糊的参数匹配
 	
 	/// Call ptr
 	char *psz = "123";
-	pTestLib01->Func(psz);
-	pTestLib01->Func(nullptr);
+	pUtility->Func(psz);
+	pUtility->Func(nullptr);
 }
 
-void CTestLib::TestSmartPtr(void)
+void CTestUtility::TestSmartPtr(void)
 {
 	CMySmartPtr::Pointer pMySmartPtr = CMySmartPtr::Create();
 	pMySmartPtr->CreateSharedPtr();

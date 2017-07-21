@@ -2,12 +2,12 @@
 
 #include <CommonDef.h>
 
-class CTestLib01
+class CUtility
 {
-	DEFINE_BOOST_SHARED_PTR(CTestLib01)
+	DEFINE_BOOST_SHARED_PTR(CUtility)
 public:
 	
-	virtual ~CTestLib01(void);
+	virtual ~CUtility(void);
 
 	/// Test nullptr
 	void Func(int nTemp)
@@ -26,6 +26,6 @@ public:
 	void TestTuple(void);
 
 protected:
-	explicit CTestLib01(void);
+	explicit CUtility(void);
 };
 

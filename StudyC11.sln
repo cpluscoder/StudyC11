@@ -2,11 +2,10 @@
 Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "StudyC11", "StudyC11\StudyC11.vcxproj", "{CCB414FC-05BC-4240-B47C-E3C2A8343FFF}"
-	ProjectSection(ProjectDependencies) = postProject
-		{EDBBA177-DCA4-417D-AC75-A45ABACE2E10} = {EDBBA177-DCA4-417D-AC75-A45ABACE2E10}
-	EndProjectSection
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "TestLib", "TestLib\TestLib.vcxproj", "{EDBBA177-DCA4-417D-AC75-A45ABACE2E10}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "StudySTL", "StudySTL\StudySTL.vcxproj", "{A8CE5E40-8FDE-462B-A478-7D0796DDA0E0}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Utility", "Utility\Utility.vcxproj", "{EDBBA177-DCA4-417D-AC75-A45ABACE2E10}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -18,6 +17,10 @@ Global
 		{CCB414FC-05BC-4240-B47C-E3C2A8343FFF}.Debug|Win32.Build.0 = Debug|Win32
 		{CCB414FC-05BC-4240-B47C-E3C2A8343FFF}.Release|Win32.ActiveCfg = Release|Win32
 		{CCB414FC-05BC-4240-B47C-E3C2A8343FFF}.Release|Win32.Build.0 = Release|Win32
+		{A8CE5E40-8FDE-462B-A478-7D0796DDA0E0}.Debug|Win32.ActiveCfg = Debug|Win32
+		{A8CE5E40-8FDE-462B-A478-7D0796DDA0E0}.Debug|Win32.Build.0 = Debug|Win32
+		{A8CE5E40-8FDE-462B-A478-7D0796DDA0E0}.Release|Win32.ActiveCfg = Release|Win32
+		{A8CE5E40-8FDE-462B-A478-7D0796DDA0E0}.Release|Win32.Build.0 = Release|Win32
 		{EDBBA177-DCA4-417D-AC75-A45ABACE2E10}.Debug|Win32.ActiveCfg = Debug|Win32
 		{EDBBA177-DCA4-417D-AC75-A45ABACE2E10}.Debug|Win32.Build.0 = Debug|Win32
 		{EDBBA177-DCA4-417D-AC75-A45ABACE2E10}.Release|Win32.ActiveCfg = Release|Win32
