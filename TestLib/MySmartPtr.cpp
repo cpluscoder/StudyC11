@@ -1,5 +1,5 @@
 #include "StdAfx.h"
-#include "MySmartPtr.h"
+#include <Utility/MySmartPtr.h>
 #include <memory>
 #include <boost/shared_ptr.hpp>
 #include <boost/make_shared.hpp>

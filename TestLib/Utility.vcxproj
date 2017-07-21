@@ -14,6 +14,7 @@
     <ProjectGuid>{EDBBA177-DCA4-417D-AC75-A45ABACE2E10}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
     <RootNamespace>TestLib</RootNamespace>
+    <ProjectName>Utility</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -25,7 +26,7 @@
     <ConfigurationType>StaticLibrary</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
     <WholeProgramOptimization>true</WholeProgramOptimization>
-    <CharacterSet>Unicode</CharacterSet>
+    <CharacterSet>MultiByte</CharacterSet>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
   <ImportGroup Label="ExtensionSettings">
@@ -44,7 +45,7 @@
     <IntDir>$(SolutionDir)obj\$(ProjectName)-$(Configuration)\</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
-    <OutDir>$(SolutionDir)bin\$(Configuration)\</OutDir>
+    <OutDir>$(SolutionDir)lib\$(Configuration)\</OutDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <IntDir>$(SolutionDir)obj\$(ProjectName)-$(Configuration)\</IntDir>
@@ -73,7 +74,7 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <PreprocessorDefinitions>WIN32;NDEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>$(BOOST_ROOT)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(BOOST_ROOT);../Include</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -89,12 +90,13 @@
     <None Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\Include\MyDateTime.h" />
-    <ClInclude Include="..\Include\MyException.h" />
-    <ClInclude Include="..\Include\MyFunction.h" />
-    <ClInclude Include="..\Include\MySmartPtr.h" />
-    <ClInclude Include="..\Include\RValueReferences.h" />
-    <ClInclude Include="..\Include\TestLib01.h" />
+    <ClInclude Include="..\Include\CommonDef.h" />
+    <ClInclude Include="..\Include\Utility\MyDateTime.h" />
+    <ClInclude Include="..\Include\Utility\MyException.h" />
+    <ClInclude Include="..\Include\Utility\MyFunction.h" />
+    <ClInclude Include="..\Include\Utility\MySmartPtr.h" />
+    <ClInclude Include="..\Include\Utility\RValueReferences.h" />
+    <ClInclude Include="..\Include\Utility\Utility.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
   </ItemGroup>
@@ -108,7 +110,7 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
     </ClCompile>
-    <ClCompile Include="TestLib01.cpp" />
+    <ClCompile Include="Utility.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -24,30 +24,30 @@
     <ClInclude Include="targetver.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="..\Include\TestLib01.h">
+    <ClInclude Include="..\Include\Utility\MyDateTime.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="..\Include\RValueReferences.h">
+    <ClInclude Include="..\Include\Utility\MyException.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="..\Include\MyFunction.h">
+    <ClInclude Include="..\Include\Utility\MyFunction.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="..\Include\MySmartPtr.h">
+    <ClInclude Include="..\Include\Utility\MySmartPtr.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="..\Include\MyException.h">
+    <ClInclude Include="..\Include\Utility\RValueReferences.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="..\Include\MyDateTime.h">
+    <ClInclude Include="..\Include\Utility\Utility.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Include\CommonDef.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="TestLib01.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="RValueReferences.cpp">
@@ -63,6 +63,9 @@
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="MyDateTime.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Utility.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>

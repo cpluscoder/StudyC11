@@ -1,15 +1,15 @@
 #include "StdAfx.h"
-#include "TestLib01.h"
+#include <Utility/Utility.h>
 #include <tuple>
 
 using namespace std;
 
-CTestLib01::CTestLib01(void)
+CUtility::CUtility(void)
 {
 }
 
 
-CTestLib01::~CTestLib01(void)
+CUtility::~CUtility(void)
 {
 }
 
@@ -36,7 +36,7 @@ auto add11(T1 x, T2 y) ->decltype(x + y)
 
 
 
-void CTestLib01::TestAuto(void)
+void CUtility::TestAuto(void)
 {
 	auto nNum = 42;
 	auto fRtn = ReturnDouble();
@@ -147,7 +147,7 @@ void CTestLib01::TestAuto(void)
 	auto nTemp = add11(x, y);
 }
 
-void CTestLib01::TestTuple(void)
+void CUtility::TestTuple(void)
 {
 	typedef std::tuple<int, string, double> TupleType;
 	std::tuple<int, string, double> tuple1(0, "0", 0.0);
@@ -168,7 +168,7 @@ void CTestLib01::TestTuple(void)
 	vctTuple.push_back(tuple2);
 	vctTuple.push_back(std::make_tuple(2, "2", 2.2));
 
-	OutputDebugString("CTestLib01::TestTuple\n");
+	OutputDebugString("CUtility::TestTuple\n");
 }
 
 #include <boost/tuple/tuple.hpp>
