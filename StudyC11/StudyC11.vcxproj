@@ -112,6 +112,7 @@
     <ClInclude Include="StudyC11.h" />
     <ClInclude Include="StudyC11Dlg.h" />
     <ClInclude Include="targetver.h" />
+    <ClInclude Include="TestSTL.h" />
     <ClInclude Include="TestUtility.h" />
   </ItemGroup>
   <ItemGroup>
@@ -121,6 +122,7 @@
     </ClCompile>
     <ClCompile Include="StudyC11.cpp" />
     <ClCompile Include="StudyC11Dlg.cpp" />
+    <ClCompile Include="TestSTL.cpp" />
     <ClCompile Include="TestUtility.cpp" />
   </ItemGroup>
   <ItemGroup>

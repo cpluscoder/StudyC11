@@ -7,6 +7,7 @@
 #include "StudyC11Dlg.h"
 #include "afxdialogex.h"
 #include "TestUtility.h"
+#include "TestSTL.h"
 
 #ifdef _DEBUG
 #define new DEBUG_NEW
@@ -158,6 +159,9 @@ HCURSOR CStudyC11Dlg::OnQueryDragIcon()
 void CStudyC11Dlg::OnBnClickedBtnTest()
 {
 	// TODO: 在此添加控件通知处理程序代码
+	CTestSTL::Pointer pTestSTL = CTestSTL::Create();
+	pTestSTL->Test();
+
 	CTestUtility::Pointer pTestUtility = CTestUtility::Create();
 	pTestUtility->Test();
 }
