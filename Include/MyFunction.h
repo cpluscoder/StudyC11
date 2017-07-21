@@ -20,7 +20,7 @@ public:
 		*y = nTemp;
 	}
 
-	/// 带参数的编译错误
+	/// 这种带参数的调用,编译错误
 	void operator () (int *x, int *y) const
 	{
 		int nTemp = *x;

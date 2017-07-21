@@ -89,6 +89,7 @@
     <None Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\Include\MyDateTime.h" />
     <ClInclude Include="..\Include\MyException.h" />
     <ClInclude Include="..\Include\MyFunction.h" />
     <ClInclude Include="..\Include\MySmartPtr.h" />
@@ -98,6 +99,7 @@
     <ClInclude Include="targetver.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="MyDateTime.cpp" />
     <ClCompile Include="MyException.cpp" />
     <ClCompile Include="MyFunction.cpp" />
     <ClCompile Include="MySmartPtr.cpp" />

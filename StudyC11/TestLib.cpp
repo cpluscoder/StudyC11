@@ -6,7 +6,15 @@
 #include <MyException.h>
 #include <MyFunction.h>
 #include <MySmartPtr.h>
+#include <MyDateTime.h>
 
+//////////////////////////////////////////////////////////////////////////
+/// 用于C++11与C语言版本兼容的头文件
+#include <cstddef>
+#include <cstdlib>
+#include <cstring>
+/// 用于C++11与C语言版本兼容的头文件
+//////////////////////////////////////////////////////////////////////////
 
 #pragma comment(lib, "TestLib.lib")
 
@@ -25,9 +33,8 @@ CTestLib::~CTestLib(void)
 
 bool CTestLib::Test(void)
 {
-	CMyFunction::Pointer pMyFunction = CMyFunction::Create();
-	pMyFunction->Test();
-	pMyFunction->TestFunctional();
+	CMyDateTime::Pointer pMyDateTime = CMyDateTime::Create();
+	pMyDateTime->Test();
 
 	CTestLib01::Pointer pTestLib01 = CTestLib01::Create();
 	pTestLib01->TestAuto();
@@ -40,6 +47,10 @@ bool CTestLib::Test(void)
 
 	CMyException::Pointer pMyException = CMyException::Create();
 	pMyException->Test();
+
+	CMyFunction::Pointer pMyFunction = CMyFunction::Create();
+	pMyFunction->Test();
+	pMyFunction->TestFunctional();
 
 
 	nullptrTest();
