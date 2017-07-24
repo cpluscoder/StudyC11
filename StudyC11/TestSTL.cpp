@@ -18,9 +18,11 @@ void CTestSTL::Test(void)
 {
 	CContainer::Pointer pContainer = CContainer::Create();
 
-	pContainer->TestUnorderedContainer();
-	
-	pContainer->TestAssociativeContainer();
+	pContainer->AssociativeArray();
 
-	pContainer->TestSequenceContainer();
+	pContainer->UnorderedContainer();
+	
+	pContainer->AssociativeContainer();
+
+	pContainer->SequenceContainer();
 }
