@@ -21,6 +21,22 @@ public:
 	/// 操作后容器中的元素顺序不确定
 	void TestUnOrderedSet(void);
 
+//////////////////////////////////////////////////////////////////////////
+/// 迭代器适配器(iterator adapter)是特殊的迭代器
+
+	/// 插入型迭代器
+	/// 调用算法功能时，使用插入(insert)而不是覆盖(overwrite)
+	void InsertIter(void);
+
+	///	串流迭代器
+	void StreamIter(void);
+
+	/// 反向迭代器
+	void ReverseIter(void);
+
+	/// 移动迭代器
+	void MoveIter(void);
+
 protected:
 	explicit CIterator(void);
 };

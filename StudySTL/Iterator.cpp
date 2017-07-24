@@ -3,6 +3,8 @@
 #include <list>
 #include <set>
 #include <unordered_set>
+#include <deque>
+#include <iostream>
 
 
 #define DEFAULT_SET_ORDER		1	/// 使用std::set默认排序 1:从小到大(默认) 0:从大到小(定义)
@@ -118,4 +120,96 @@ void CIterator::TestUnOrderedSet(void)
 
 	string strOut = strStream.str();
 	OutputDebugString(strOut.c_str());
+}
+
+void CIterator::InsertIter(void)
+{
+	using namespace std;
+
+	int nArray[] = { 1, 2, 3, 4, 5, 6, 7, 8, 9 };
+	//list<int> coll1 = { 1, 2, 3, 4, 5, 6, 7, 8, 9 };
+	list<int> coll1;
+	for(int i = 0; i < COUNT_OF(nArray); ++i)
+	{
+		coll1.push_back(nArray[i]);
+	}
+
+	/// back_inserter:追加,在容器末端插入(内部调用push_back)
+	// copy the elements of coll1 into coll2 by appending them
+	vector<int> coll2;
+	copy(coll1.cbegin(), coll1.cend(),   // source
+		back_inserter(coll2));           // destination
+
+	/// front_inserter:在容器最前端插入(内部调用push_front)
+	// copy the elements of coll1 into coll3 by inserting them at the front
+	// - reverses the order of the elements
+	deque<int> coll3;
+	copy(coll1.cbegin(), coll1.cend(),   // source
+		front_inserter(coll3));          // destination
+
+	/// inserter:普通插入,(内部调用insert)
+	// copy elements of coll1 into coll4
+	// - only inserter that works for associative collections
+	set<int> coll4;
+	copy(coll1.cbegin(), coll1.cend(),   // source
+		inserter(coll4, coll4.begin())); // destination
+}
+
+void CIterator::StreamIter(void)
+{
+	using namespace std;
+
+	vector<string> coll;
+
+	stringstream strInStream;
+	for(int i = 0; i < 10; ++i)
+	{
+		strInStream << i << endl;
+	}
+
+	// read all words from the standard input
+	// - source: all strings until end-of-file (or error)
+	// - destination: coll (inserting)
+	copy(istream_iterator<string>(strInStream/*cin*/),   // start of source
+		istream_iterator<string>(),       // end of source
+		back_inserter(coll));             // destination
+
+	// sort elements
+	//sort(coll.begin(), coll.end());
+	std::reverse(coll.begin(), coll.end());
+
+	stringstream strOutStream;
+	// print all elements without duplicates
+	// - source: coll
+	// - destination: standard output (with newline between elements)
+	unique_copy(coll.cbegin(), coll.cend(),   // source
+		ostream_iterator<string>(strOutStream/*cout*/, "\n")); // destination
+
+	string strOut = strOutStream.str();
+	OutputDebugString(strOut.c_str());
+}
+
+void CIterator::ReverseIter(void)
+{
+	using namespace std;
+
+	vector<int> coll;
+
+	// insert elements from 1 to 9
+	for (int i = 1; i <= 9; ++i) {
+		coll.push_back(i);
+	}
+
+	stringstream strOutStream;
+	// print all element in reverse order
+	copy(coll.crbegin(), coll.crend(),      // source
+		ostream_iterator<int>(strOutStream, " "));  // destination
+	strOutStream << endl;
+	string strOut = strOutStream.str();
+	OutputDebugString(strOut.c_str());
+}
+
+void CIterator::MoveIter(void)
+{
+	/// todo...
 }
