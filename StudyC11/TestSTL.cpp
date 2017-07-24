@@ -2,6 +2,7 @@
 #include "TestSTL.h"
 #include <StudySTL/Container.h>
 #include <StudySTL/Iterator.h>
+#include <StudySTL/Algorithm.h>
 
 #pragma comment(lib, "StudySTL.lib")
 
@@ -17,6 +18,9 @@ CTestSTL::~CTestSTL(void)
 
 void CTestSTL::Test(void)
 {
+	CAlgorithm::Pointer pAlgorithm = CAlgorithm::Create();
+	pAlgorithm->Test();
+
 	CIterator::Pointer pIterator = CIterator::Create();
 	pIterator->TestUnOrderedSet();
 	pIterator->TestSet();
