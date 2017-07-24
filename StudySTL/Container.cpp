@@ -4,6 +4,7 @@
 #include <array>
 #include <list>
 #include <forward_list>
+#include <set>
 
 
 CContainer::CContainer(void)
@@ -15,13 +16,24 @@ CContainer::~CContainer(void)
 {
 }
 
-void CContainer::Test(void)
+void CContainer::TestSequenceContainer(void)
 {
 	TestForwardList();
 	TestList();
 	TestArray();
 	TestDeque();
 	TestVector();
+}
+
+void CContainer::TestAssociativeContainer(void)
+{
+	TestMulteMap();
+	TestMultiSet();
+}
+
+void CContainer::TestUnorderedContainer(void)
+{
+	;
 }
 
 void CContainer::TestVector(void)
@@ -129,5 +141,70 @@ void CContainer::TestForwardList(void)
 
 	std::string strOut;
 	strOut = strStream.str();
+	OutputDebugString(strOut.c_str());
+}
+
+void CContainer::TestMultiSet(void)
+{
+	using namespace std;
+	multiset<string> cities;
+	cities.insert("Braunschweig");
+	cities.insert("Hanover");
+	cities.insert("Frankfurt");
+	cities.insert("New York");
+	cities.insert("Chicago");
+	cities.insert("Toronto");
+	cities.insert("Paris");
+	cities.insert("Frankfurt");
+	
+	stringstream strStream;
+	// print each element:
+	for(auto elem = cities.cbegin(); elem != cities.cend(); ++elem)
+	{
+		strStream << *elem << "  ";
+	}
+	strStream << endl;
+
+	// insert additional values:
+	cities.insert("London");
+	cities.insert("Munich");
+	cities.insert("Hanover");
+	cities.insert("Braunschweig");
+
+	// print each element:
+	for (auto& iter = cities.cbegin(); iter != cities.cend(); ++iter) {
+		strStream << *iter << "  ";
+	}
+	strStream << endl;
+
+	string strOut;
+	strOut = strStream.str();
+	OutputDebugString(strOut.c_str());
+}
+
+void CContainer::TestMulteMap(void)
+{
+	using namespace std;
+	// container for int/string values
+	multimap<int, string> coll;
+
+	// assign some elements in arbitrary order - a value with key 1 gets inserted twice
+	std::pair<int, string> pair1(5, "tagged");
+	coll.insert(pair1);
+
+	coll.insert(std::make_pair(2, "a"));
+	coll.insert(std::make_pair(1,"this"));
+	coll.insert(std::make_pair(4, "of"));
+	coll.insert(std::make_pair(6, "strings"));
+	coll.insert(std::make_pair(1, "is"));
+	coll.insert(std::make_pair(3, "multimap"));
+
+	stringstream strStream;
+	// print all element values - element member second is the value
+	for (auto elem = coll.begin(); elem != coll.end(); ++elem) {
+		strStream << elem->second << ' ';
+	}
+	strStream << endl;
+	string strOut = strStream.str();
 	OutputDebugString(strOut.c_str());
 }

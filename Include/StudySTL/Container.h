@@ -10,7 +10,11 @@ public:
 	
 	virtual ~CContainer(void);
 
-	void Test(void);
+	void TestSequenceContainer(void);
+
+	void TestAssociativeContainer(void);
+
+	void TestUnorderedContainer(void);
 
 protected:
 	explicit CContainer(void);
@@ -47,5 +51,18 @@ protected:
 	/* 节省内存，只指向下一个元素                                           */
 	/************************************************************************/
 	void TestForwardList(void);
+
+
+	/************************************************************************/
+	/* 元素可重复的std::set                                                 */
+	/* insert后, 默认按 "<" 自动形成顺序                                    */
+	/************************************************************************/
+	void TestMultiSet(void);
+
+	/************************************************************************/
+	/* key可重复的std::map                                                  */
+	/* insert后, 默认按 "<" 自动形成顺序                                    */
+	/************************************************************************/
+	void TestMulteMap(void);
 };
 
