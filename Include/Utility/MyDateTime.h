@@ -96,11 +96,11 @@ template <typename C>
 void printClockData(void)
 {
 	using std::endl;
-	std::stringstream strStream;
+	std::stringstream strOutStream;
 	std::string strOut;
 
-	strStream << "- precision: ";
-	//strOut = strStream.str();
+	strOutStream << "- precision: ";
+	//strOut = strOutStream.str();
 	//OutputDebugString(strOut.c_str());
 
 	// if time unit is less than or equal to one millisecond
@@ -109,19 +109,19 @@ void printClockData(void)
 	{
 		// convert to and print as milliseconds
 		typedef typename boost::ratio_multiply<P, boost::kilo>::type TT;
-		strStream << std::fixed << double(TT::num)/TT::den << " milliseconds" << endl;
-		//strOut = strStream.str();
+		strOutStream << std::fixed << double(TT::num)/TT::den << " milliseconds" << endl;
+		//strOut = strOutStream.str();
 		//OutputDebugString(strOut.c_str());
 	}
 	else
 	{
 		// print as seconds
-		strStream << std::fixed << double(P::num)/P::den << " seconds" << endl;
-		//strOut = strStream.str();
+		strOutStream << std::fixed << double(P::num)/P::den << " seconds" << endl;
+		//strOut = strOutStream.str();
 		//OutputDebugString(strOut.c_str());
 	}
-	strStream << "- is_steady: " << std::boolalpha << C::is_steady << endl;
-	strOut = strStream.str();
+	strOutStream << "- is_steady: " << std::boolalpha << C::is_steady << endl;
+	strOut = strOutStream.str();
 	OutputDebugString(strOut.c_str());
 }
 

@@ -31,15 +31,15 @@ void CIterator::Test(void)
 		coll.push_back(c);
 	}
 
-	stringstream strStream;
+	stringstream strOutStream;
 	// print all elements: - iterate over all elements
 	list<char>::const_iterator pos;
 	for(pos = coll.begin(); pos != coll.end(); ++pos) {
-		strStream << *pos << ' ';
+		strOutStream << *pos << ' ';
 	}
-	strStream << endl;
+	strOutStream << endl;
 
-	string strOut = strStream.str();
+	string strOut = strOutStream.str();
 	OutputDebugString(strOut.c_str());
 }
 
@@ -70,7 +70,7 @@ void CIterator::TestSet(void)
 	coll.insert(6);
 	coll.insert(2);
 
-	stringstream strStream;
+	stringstream strOutStream;
 	// print all elements - iterate over all elements
 #if DEFAULT_SET_ORDER
 	IntSet::const_iterator pos;
@@ -78,11 +78,11 @@ void CIterator::TestSet(void)
 	GreaterIntSet::const_iterator pos;
 #endif
 	for(pos = coll.begin(); pos != coll.end(); ++pos) {
-		strStream << *pos << ' ';
+		strOutStream << *pos << ' ';
 	}
-	strStream << endl;
+	strOutStream << endl;
 
-	string strOut = strStream.str();
+	string strOut = strOutStream.str();
 	OutputDebugString(strOut.c_str());
 }
 
@@ -100,13 +100,13 @@ void CIterator::TestUnOrderedSet(void)
 		coll.insert(nArray[i]);
 	}
 
-	stringstream strStream;
+	stringstream strOutStream;
 	// print all elements
 	for(auto elem = coll.begin(); elem != coll.end(); ++ elem)
 	{
-		strStream << *elem << ' ';
+		strOutStream << *elem << ' ';
 	}
-	strStream << std::endl;
+	strOutStream << std::endl;
 
 	// insert one more element
 	coll.insert(25);
@@ -114,11 +114,11 @@ void CIterator::TestUnOrderedSet(void)
 	// print all elements again
 	for(auto elem = coll.begin(); elem != coll.end(); ++ elem)
 	{
-		strStream << *elem << ' ';
+		strOutStream << *elem << ' ';
 	}
-	strStream << std::endl;
+	strOutStream << std::endl;
 
-	string strOut = strStream.str();
+	string strOut = strOutStream.str();
 	OutputDebugString(strOut.c_str());
 }
 

@@ -50,6 +50,20 @@ protected:	\
 /************************************************************************/
 #define COUNT_OF(arr)   (sizeof(arr) / sizeof(arr[0]))
 
+template <typename T>
+inline void PRINT_ELEMENTS(const T& collection)
+{
+	std::stringstream strOutStream;
+	for(auto iter = collection.begin(); iter != collection.end(); ++iter)
+	{
+		strOutStream << *iter << ' ';
+	}
+	strOutStream << std::endl;
+
+	std::string strOut = strOutStream.str();
+	OutputDebugString(strOut.c_str());
+}
+
 /************************************************************************/
 /* 定义常量                                                             */
 /************************************************************************/

@@ -24,6 +24,15 @@ public:
 	/// 算法处理多个(容器)区间时,需要程序员确定：目标区间大小 >= 源区间大小
 	void TestCopy(void);
 
+	/// 使用迭代器访问容器的算法,不得通过迭代器访问容器自身提供的成员函数
+	void TestRemove(void);
+
+protected:
+	void Remove1(void);
+	void Remove2(void);
+	void Remove3(void);
+	void Remove4(void);
+
 protected:
 	explicit CAlgorithm(void);
 };

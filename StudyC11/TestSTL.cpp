@@ -18,6 +18,12 @@ CTestSTL::~CTestSTL(void)
 
 void CTestSTL::Test(void)
 {
+	CAlgorithm::Pointer pAlgorithm = CAlgorithm::Create();
+	pAlgorithm->TestRemove();
+	pAlgorithm->TestCopy();
+	pAlgorithm->TestFind();
+	pAlgorithm->Test();
+
 	CIterator::Pointer pIterator = CIterator::Create();
 	pIterator->ReverseIter();
 	pIterator->StreamIter();
@@ -25,11 +31,6 @@ void CTestSTL::Test(void)
 	pIterator->TestUnOrderedSet();
 	pIterator->TestSet();
 	pIterator->Test();
-
-	CAlgorithm::Pointer pAlgorithm = CAlgorithm::Create();
-	pAlgorithm->TestCopy();
-	pAlgorithm->TestFind();
-	pAlgorithm->Test();
 
 	CContainer::Pointer pContainer = CContainer::Create();
 	pContainer->AssociativeArray();

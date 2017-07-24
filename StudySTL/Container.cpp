@@ -60,15 +60,15 @@ void CContainer::TestVector(void)
 		coll.push_back(i);
 	}
 
-	std::stringstream strStream;
+	std::stringstream strOutStream;
 	// print all elements followed by a space
 	for(size_t i = 0; i < coll.size(); ++i) {
-		strStream << coll[i] << ' ';
+		strOutStream << coll[i] << ' ';
 	}
-	strStream << std::endl;
+	strOutStream << std::endl;
 
 	std::string strOut;
-	strOut = strStream.str();
+	strOut = strOutStream.str();
 	OutputDebugString(strOut.c_str());
 }
 
@@ -83,15 +83,15 @@ void CContainer::TestDeque(void)
 		coll.push_front(i * 1.1);
 	}
 
-	std::stringstream strStream;
+	std::stringstream strOutStream;
 	// print all elements followed by a space
 	for(size_t i = 0; i < coll.size(); ++i) {
-		strStream << coll[i] << ' ';
+		strOutStream << coll[i] << ' ';
 	}
-	strStream << std::endl;
+	strOutStream << std::endl;
 
 	std::string strOut;
-	strOut = strStream.str();
+	strOut = strOutStream.str();
 	OutputDebugString(strOut.c_str());
 }
 
@@ -100,14 +100,14 @@ void CContainer::TestArray(void)
 	// array container of 5 string elements:
 	std::array<std::string, 5> coll = { "hello", "world" };
 
-	std::stringstream strStream;
+	std::stringstream strOutStream;
 	// print each element with its index on a line
 	for(size_t i = 0; i < coll.size(); ++i) {
-		strStream << i << ": " << coll[i] << std::endl;
+		strOutStream << i << ": " << coll[i] << std::endl;
 	}
 
 	std::string strOut;
-	strOut = strStream.str();
+	strOut = strOutStream.str();
 	OutputDebugString(strOut.c_str());
 }
 
@@ -121,15 +121,15 @@ void CContainer::TestList(void)
 		coll.push_back(c);
 	}
 
-	std::stringstream strStream;
+	std::stringstream strOutStream;
 	// print all elements: - use range-based for loop
 	for(auto iter = coll.begin(); iter != coll.end(); ++iter) {
-		strStream << *iter << ' ';
+		strOutStream << *iter << ' ';
 	}
-	strStream << std::endl;
+	strOutStream << std::endl;
 
 	std::string strOut;
-	strOut = strStream.str();
+	strOut = strOutStream.str();
 	OutputDebugString(strOut.c_str());
 }
 
@@ -146,15 +146,15 @@ void CContainer::TestForwardList(void)
 	coll.resize(9);
 	coll.resize(10, 99);
 
-	std::stringstream strStream;
+	std::stringstream strOutStream;
 	// print all elements:
 	for(auto iter = coll.begin(); iter != coll.end(); ++iter) {
-		strStream << *iter << ' ';
+		strOutStream << *iter << ' ';
 	}
-	strStream << std::endl;
+	strOutStream << std::endl;
 
 	std::string strOut;
-	strOut = strStream.str();
+	strOut = strOutStream.str();
 	OutputDebugString(strOut.c_str());
 }
 
@@ -171,13 +171,13 @@ void CContainer::TestMultiSet(void)
 	cities.insert("Paris");
 	cities.insert("Frankfurt");
 	
-	stringstream strStream;
+	stringstream strOutStream;
 	// print each element:
 	for(auto elem = cities.cbegin(); elem != cities.cend(); ++elem)
 	{
-		strStream << *elem << "  ";
+		strOutStream << *elem << "  ";
 	}
-	strStream << endl;
+	strOutStream << endl;
 
 	// insert additional values:
 	cities.insert("London");
@@ -187,12 +187,12 @@ void CContainer::TestMultiSet(void)
 
 	// print each element:
 	for(auto& iter = cities.cbegin(); iter != cities.cend(); ++iter) {
-		strStream << *iter << "  ";
+		strOutStream << *iter << "  ";
 	}
-	strStream << endl;
+	strOutStream << endl;
 
 	string strOut;
-	strOut = strStream.str();
+	strOut = strOutStream.str();
 	OutputDebugString(strOut.c_str());
 }
 
@@ -213,13 +213,13 @@ void CContainer::TestMulteMap(void)
 	coll.insert(std::make_pair(1, "is"));
 	coll.insert(std::make_pair(3, "multimap"));
 
-	stringstream strStream;
+	stringstream strOutStream;
 	// print all element values - element member second is the value
 	for(auto elem = coll.begin(); elem != coll.end(); ++elem) {
-		strStream << elem->second << ' ';
+		strOutStream << elem->second << ' ';
 	}
-	strStream << endl;
-	string strOut = strStream.str();
+	strOutStream << endl;
+	string strOut = strOutStream.str();
 	OutputDebugString(strOut.c_str());
 }
 
@@ -236,13 +236,13 @@ void CContainer::TestUnorderedMultiSet(void)
 	cities.insert("Paris");
 	cities.insert("Frankfurt");
 
-	stringstream strStream;
+	stringstream strOutStream;
 	// print each element:
 	for(auto &elem = cities.cbegin(); elem != cities.cend(); ++elem)
 	{
-		strStream << *elem << "  ";;
+		strOutStream << *elem << "  ";;
 	}
-	strStream << endl;
+	strOutStream << endl;
 
 	// insert additional values:
 	cities.insert("London");
@@ -252,10 +252,10 @@ void CContainer::TestUnorderedMultiSet(void)
 
 	// print each element:
 	for(auto &elem = cities.cbegin(); elem != cities.cend(); ++elem) {
-		strStream << *elem << "  ";
+		strOutStream << *elem << "  ";
 	}
-	strStream << endl;
-	string strOut = strStream.str();
+	strOutStream << endl;
+	string strOut = strOutStream.str();
 	OutputDebugString(strOut.c_str());
 }
 
@@ -272,13 +272,13 @@ void CContainer::TestUnorderedMap(void)
 		iter->second = iter->second * iter->second;
 	}
 
-	stringstream strStream;
+	stringstream strOutStream;
 	// print each element (key and value):
 	for(auto& elem = coll.cbegin(); elem != coll.cend(); ++elem) {
-		strStream << elem->first << ": " << elem->second << endl;
+		strOutStream << elem->first << ": " << elem->second << endl;
 	}
 
-	string strOut = strStream.str();
+	string strOut = strOutStream.str();
 	OutputDebugString(strOut.c_str());
 }
 
@@ -305,9 +305,9 @@ void CContainer::TestAssociativeArray(void)
 	// change value
 	coll["VAT1"] += 0.03;
 
-	stringstream strStream;
+	stringstream strOutStream;
 	// print difference of VAT values
-	strStream << "VAT difference: " << coll["VAT1"] - coll["VAT2"] << endl;
-	string strOut = strStream.str();
+	strOutStream << "VAT difference: " << coll["VAT1"] - coll["VAT2"] << endl;
+	string strOut = strOutStream.str();
 	OutputDebugString(strOut.c_str());
 }
