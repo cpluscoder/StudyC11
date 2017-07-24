@@ -18,6 +18,12 @@ public:
 
 	void Test(void);
 
+	/// 算法中的(容器)区间必须从前到后，使用前必须确定，否则算法行为未知！
+	void TestFind(void);
+
+	/// 算法处理多个(容器)区间时,需要程序员确定：目标区间大小 >= 源区间大小
+	void TestCopy(void);
+
 protected:
 	explicit CAlgorithm(void);
 };

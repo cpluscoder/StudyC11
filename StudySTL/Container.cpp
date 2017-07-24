@@ -62,7 +62,7 @@ void CContainer::TestVector(void)
 
 	std::stringstream strStream;
 	// print all elements followed by a space
-	for (size_t i = 0; i < coll.size(); ++i) {
+	for(size_t i = 0; i < coll.size(); ++i) {
 		strStream << coll[i] << ' ';
 	}
 	strStream << std::endl;
@@ -78,14 +78,14 @@ void CContainer::TestDeque(void)
 	std::deque<double> coll;
 
 	// insert elements from 1.1 to 6.6 each at the front
-	for (int i = 1; i <= 6; ++i) {
+	for(int i = 1; i <= 6; ++i) {
 		// insert at the front
 		coll.push_front(i * 1.1);
 	}
 
 	std::stringstream strStream;
 	// print all elements followed by a space
-	for (size_t i = 0; i < coll.size(); ++i) {
+	for(size_t i = 0; i < coll.size(); ++i) {
 		strStream << coll[i] << ' ';
 	}
 	strStream << std::endl;
@@ -186,7 +186,7 @@ void CContainer::TestMultiSet(void)
 	cities.insert("Braunschweig");
 
 	// print each element:
-	for (auto& iter = cities.cbegin(); iter != cities.cend(); ++iter) {
+	for(auto& iter = cities.cbegin(); iter != cities.cend(); ++iter) {
 		strStream << *iter << "  ";
 	}
 	strStream << endl;
@@ -215,7 +215,7 @@ void CContainer::TestMulteMap(void)
 
 	stringstream strStream;
 	// print all element values - element member second is the value
-	for (auto elem = coll.begin(); elem != coll.end(); ++elem) {
+	for(auto elem = coll.begin(); elem != coll.end(); ++elem) {
 		strStream << elem->second << ' ';
 	}
 	strStream << endl;
@@ -274,7 +274,7 @@ void CContainer::TestUnorderedMap(void)
 
 	stringstream strStream;
 	// print each element (key and value):
-	for (auto& elem = coll.cbegin(); elem != coll.cend(); ++elem) {
+	for(auto& elem = coll.cbegin(); elem != coll.cend(); ++elem) {
 		strStream << elem->first << ": " << elem->second << endl;
 	}
 

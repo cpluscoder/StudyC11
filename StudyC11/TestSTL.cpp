@@ -19,6 +19,8 @@ CTestSTL::~CTestSTL(void)
 void CTestSTL::Test(void)
 {
 	CAlgorithm::Pointer pAlgorithm = CAlgorithm::Create();
+	pAlgorithm->TestCopy();
+	pAlgorithm->TestFind();
 	pAlgorithm->Test();
 
 	CIterator::Pointer pIterator = CIterator::Create();
