@@ -7,6 +7,8 @@
 #include <iostream>
 
 
+using namespace std;
+
 #define DEFAULT_SET_ORDER		1	/// 使用std::set默认排序 1:从小到大(默认) 0:从大到小(定义)
 
 
@@ -21,8 +23,6 @@ CIterator::~CIterator(void)
 
 void CIterator::Test(void)
 {
-	using namespace std;
-
 	// list container for character elements
 	list<char> coll;
 
@@ -45,8 +45,6 @@ void CIterator::Test(void)
 
 void CIterator::TestSet(void)
 {
-	using namespace std;
-
 	// type of the collection
 	typedef std::set<int> IntSet;
 
@@ -86,8 +84,6 @@ void CIterator::TestSet(void)
 
 void CIterator::TestUnOrderedSet(void)
 {
-	using namespace std;
-
 	// unordered multiset container for int values
 	std::unordered_multiset<int> coll;
 
@@ -121,8 +117,6 @@ void CIterator::TestUnOrderedSet(void)
 
 void CIterator::InsertIter(void)
 {
-	using namespace std;
-
 	int nArray[] = { 1, 2, 3, 4, 5, 6, 7, 8, 9 };
 	//list<int> coll1 = { 1, 2, 3, 4, 5, 6, 7, 8, 9 };
 	list<int> coll1;
@@ -154,8 +148,6 @@ void CIterator::InsertIter(void)
 
 void CIterator::StreamIter(void)
 {
-	using namespace std;
-
 	vector<string> coll;
 
 	stringstream strInStream;
@@ -187,8 +179,6 @@ void CIterator::StreamIter(void)
 
 void CIterator::ReverseIter(void)
 {
-	using namespace std;
-
 	vector<int> coll;
 
 	// insert elements from 1 to 9
@@ -208,4 +198,34 @@ void CIterator::ReverseIter(void)
 void CIterator::MoveIter(void)
 {
 	/// todo...
+}
+
+void CIterator::ErrorUseIter(void)
+{
+	vector<int> coll1;    // empty collection
+	vector<int> coll2;    // empty collection
+
+	// RUNTIME ERROR:
+	// - beginning is behind the end of the range
+	//vector<int>::iterator pos = coll1.begin();
+	//reverse(++pos, coll1.end());
+
+	// insert elements from 1 to 9 into coll1
+	for(int i = 1; i <= 9; ++i)
+	{
+		coll1.push_back(i);
+	}
+
+	// RUNTIME ERROR:
+	// - overwriting nonexisting elements
+	//copy(
+	//	coll1.cbegin(), coll1.cend(),  // source
+	//	coll2.begin());                // destination
+
+	// RUNTIME ERROR:
+	// - collections mistaken
+	// - cbegin() and cend() refer to different collections
+	//copy(
+	//	coll1.cbegin(), coll2.cend(),  // source
+	//	coll1.end());                  // destination
 }

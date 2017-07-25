@@ -21,6 +21,8 @@ public:
 	/// 操作后容器中的元素顺序不确定
 	void TestUnOrderedSet(void);
 
+	void ErrorUseIter(void);
+
 //////////////////////////////////////////////////////////////////////////
 /// 迭代器适配器(iterator adapter)是特殊的迭代器
 

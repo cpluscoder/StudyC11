@@ -36,6 +36,7 @@ void CTestSTL::Test(void)
 	pAlgorithm->Test();
 
 	CIterator::Pointer pIterator = CIterator::Create();
+	pIterator->ErrorUseIter();
 	pIterator->ReverseIter();
 	pIterator->StreamIter();
 	pIterator->InsertIter();
