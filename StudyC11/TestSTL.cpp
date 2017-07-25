@@ -19,6 +19,12 @@ CTestSTL::~CTestSTL(void)
 void CTestSTL::Test(void)
 {
 	CAlgorithm::Pointer pAlgorithm = CAlgorithm::Create();
+	pAlgorithm->TestBind();
+	pAlgorithm->TestStlDefaultFuncObj();
+	pAlgorithm->TestFunctionObj();
+	pAlgorithm->TestForEachNew();
+	pAlgorithm->TestLambdaSort();
+	pAlgorithm->TestLambda();
 	pAlgorithm->TestDoublePredicate();
 	pAlgorithm->TestPredicate();
 	pAlgorithm->TestTransform();

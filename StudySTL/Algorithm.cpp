@@ -540,3 +540,199 @@ void CAlgorithm::TestDoublePredicate(void)
 	PRINT_STREAM(strOutStream);
 }
 
+void CAlgorithm::TestLambda(void)
+{
+	int nArray [] = { 1, 3, 19, 5, 13, 7, 11, 2, 17 };
+	deque<int> coll;
+	for(int i = 0; i < COUNT_OF(nArray); ++i)
+	{
+		coll.push_back(nArray[i]);
+	}
+
+	int x = 5;
+	int y = 12;
+
+	/// lambda "[=]" 传递值
+	/// lambda "[&]" 传递引用
+	auto pos = find_if(
+		coll.cbegin(), coll.cend(),  // range
+		[=](int nValue) {            // search criterion
+			return nValue > x && nValue < y;
+		}
+	);
+
+	stringstream strOutStream;
+	strOutStream << "first elem >5 and <12: " << *pos << endl;
+	PRINT_STREAM(strOutStream);
+}
+
+void CAlgorithm::TestLambdaSort(void)
+{
+	// create some persons
+	CPerson p1("nicolai", "josuttis");
+	CPerson p2("ulli", "josuttis");
+	CPerson p3("anica", "josuttis");
+	CPerson p4("lucas", "josuttis");
+	CPerson p5("lucas", "otto");
+	CPerson p6("lucas", "arm");
+	CPerson p7("anica", "holle");
+
+	// insert person into collection coll
+	deque<CPerson> coll;
+	coll.push_back(p1);
+	coll.push_back(p2);
+	coll.push_back(p3);
+	coll.push_back(p4);
+	coll.push_back(p5);
+	coll.push_back(p6);
+	coll.push_back(p7);
+
+	stringstream strOutStream;
+	strOutStream << "Before sort:\t" << endl;
+	for(auto iter = coll.begin(); iter != coll.end(); ++iter) {
+		strOutStream << *iter << endl;
+	}
+
+	// sort Persons according to lastname (and firstname):
+	sort(
+		coll.begin(),coll.end(), // range
+		[] (const CPerson& p1, const CPerson& p2) {
+			// sort criterion
+			return p1.lastName() < p2.lastName() || (p1.lastName() == p2.lastName() && p1.firstName() < p2.firstName());
+	});
+	
+	strOutStream << "After sort:\t" << endl;
+	for(auto iter = coll.begin(); iter != coll.end(); ++iter) {
+		strOutStream << *iter << endl;
+	}
+	PRINT_STREAM(strOutStream);
+}
+
+void CAlgorithm::TestForEachNew(void)
+{
+	vector<int> coll;
+
+	// insert elements from 1 to 9
+	for(int i = 1; i <= 9; ++i) {
+		coll.push_back(i);
+	}
+
+	stringstream strOutStream;
+	// print all elements
+	for_each(coll.cbegin(), coll.cend(),  // range
+		CFunctionObj(strOutStream));      // operation
+	strOutStream << endl;
+
+	PRINT_STREAM(strOutStream);
+}
+
+
+// function object that adds the value with which it is initialized
+class CAddValue
+{
+public:
+	// constructor initializes the value to add
+	explicit CAddValue(int v) : theValue(v) {}
+
+	// the "function call" for the element adds the value
+	void operator() (int& elem) const {
+		elem += theValue;
+	}
+
+private:
+	int theValue;    // the value to add
+};
+
+void CAlgorithm::TestFunctionObj(void)
+{
+	list<int> coll;
+
+	// insert elements from 1 to 9
+	for(int i = 1; i <= 9; ++i) {
+		coll.push_back(i);
+	}
+	PRINT_ELEMENTS(coll, "initialized:                ");
+
+	// add value 10 to each element
+	for_each(
+		coll.begin(), coll.end(),    // range
+		CAddValue(10));              // operation
+	PRINT_ELEMENTS(coll, "after adding 10:            ");
+
+	// add value of first element to each element
+	for_each(
+		coll.begin(), coll.end(),    // range
+		CAddValue(*coll.begin()));   // operation
+	PRINT_ELEMENTS(coll, "after adding first element: ");
+}
+
+void CAlgorithm::TestStlDefaultFuncObj(void)
+{
+	int nArray [] = { 1, 2, 3, 5, 7, 11, 13, 17, 19 };
+	deque<int> coll;
+	for(int i = 0; i < COUNT_OF(nArray); i++)
+	{
+		coll.push_back(nArray[i]);
+	}
+	PRINT_ELEMENTS(coll, "initialized: ");
+
+	// negate all values in coll
+	transform(
+		coll.cbegin(), coll.cend(),     // source
+		coll.begin(),                   // destination
+		negate<int>());                 // operation
+	PRINT_ELEMENTS(coll, "negated:     ");
+
+	// square all values in coll
+	transform(
+		coll.cbegin(), coll.cend(),     // first source
+		coll.cbegin(),                  // second source
+		coll.begin(),                   // destination
+		multiplies<int>());             // operation
+	PRINT_ELEMENTS(coll, "squared:     ");
+}
+
+void CAlgorithm::TestBind(void)
+{
+	int nArray [] = { 1, 2, 3, 4, 5, 6, 7, 8, 9 };
+	set<int, greater<int>> coll1;
+	for(int i = 0; i < COUNT_OF(nArray); ++i)
+	{
+		coll1.insert(nArray[i]);
+	}
+	// Note: due to the sorting criterion greater<>() elements have reverse order:
+	PRINT_ELEMENTS(coll1, "initialized: ");
+
+	deque<int> coll2;
+	// transform all elements into coll2 by multiplying them with 10
+	transform(
+		coll1.cbegin(), coll1.cend(),                      // source
+		back_inserter(coll2),                              // destination
+		bind(multiplies<int>(), std::placeholders::_1, 10) // operation
+		);   
+	PRINT_ELEMENTS(coll2, "transformed: ");
+
+	// replace value equal to 70 with 42
+	replace_if(
+		coll2.begin(), coll2.end(),                       // range
+		bind(equal_to<int>(), std::placeholders::_1, 70), // replace criterion
+		//bind(equal_to<int>(), 70, std::placeholders::_1), // 也行!
+		42                                                // new value
+		);
+	PRINT_ELEMENTS(coll2, "replaced:    ");
+
+	///	vs2010 bug??? https://connect.microsoft.com/VisualStudio/feedback/details/434414/a-bug-about-std-tr1-bind
+	// remove all elements with values between 50 and 80
+	//coll2.erase(
+	//	remove_if(coll2.begin(), coll2.end(),
+	//		bind(logical_and<bool>(), 
+	//			bind(greater_equal<int>(), std::placeholders::_1, 50),
+	//			bind(less_equal<int>(), std::placeholders::_1, 80)
+	//			)
+	//	),
+	//	coll2.end()
+	//	);
+	auto iterBegin = remove_if(coll2.begin(), coll2.end(), bind(greater_equal<int>(), std::placeholders::_1, 50));
+	coll2.erase(iterBegin, coll2.end());
+	PRINT_ELEMENTS(coll2, "removed:     ");
+}

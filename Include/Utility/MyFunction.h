@@ -2,6 +2,23 @@
 
 #include <CommonDef.h>
 
+class CFunctionObj
+{
+public:
+	//return-value operator() (arguments) const;
+	bool operator() (int x, int y) const
+	{
+		return x > y;
+	}
+
+	void Test(void)
+	{
+		int nNum1 = 43, nNum2 = 66;
+		CFunctionObj obj;
+		obj(nNum1, nNum2);
+	}
+};
+
 class CCallableObj
 {
 public:
@@ -28,7 +45,6 @@ public:
 		*y = nTemp;
 	}
 
-	/// ≤ªª·”√
 	template<typename T, typename U>
 	auto operator () (T t, U u) const -> decltype(t + u)
 	{

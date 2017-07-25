@@ -59,7 +59,14 @@ void CMyFunction::Test(void)
 
 void CMyFunction::TestFunctional()
 {
-	std::vector<std::function<void(int *, int *)>> tasks;
+	CFunctionObj objFunc;
+	objFunc.Test();
+	bool bIsGreater = objFunc(33, 22);
+
+	std::function<int (int, int)> pFunc = CCallableObj();
+	int nResult = pFunc(21, 3);
+
+	vector<std::function<void(int *, int *)>> tasks;
 	tasks.push_back(::SwapNumber);
 	tasks.push_back([] (int *x, int *y) {
 		*x = *x * 2;
@@ -72,7 +79,6 @@ void CMyFunction::TestFunctional()
 
 	int nNum1 = 23;
 	int nNum2 = 54;
-	int nResult = 0;
 	for(auto iter = tasks.begin(); iter != tasks.end(); ++iter)
 	{
 		(*iter)(&nNum1, &nNum2);
