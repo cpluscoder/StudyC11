@@ -61,8 +61,7 @@ void CAlgorithm::Test(void)
 	}
 	strOutStream << endl;
 
-	string strOut = strOutStream.str();
-	OutputDebugString(strOut.c_str());
+	PRINT_STREAM(strOutStream);
 }
 
 void CAlgorithm::TestFind(void)
@@ -126,8 +125,7 @@ void CAlgorithm::TestFind(void)
 		pos25 = find(++iterPos, coll.end(), 25);
 	}
 
-	string strOut = strOutStream.str();
-	OutputDebugString(strOut.c_str());
+	PRINT_STREAM(strOutStream);
 }
 
 void CAlgorithm::TestCopy(void)
@@ -199,8 +197,7 @@ void CAlgorithm::Remove1(void)
 		ostream_iterator<int>(strOutStream, " "));   // destination
 	strOutStream << endl;
 
-	string strOut = strOutStream.str();
-	OutputDebugString(strOut.c_str());
+	PRINT_STREAM(strOutStream);
 }
 
 void CAlgorithm::Remove2(void)
@@ -237,8 +234,7 @@ void CAlgorithm::Remove2(void)
 		ostream_iterator<int>(strOutStream, " "));
 	strOutStream << endl;
 
-	string strOut = strOutStream.str();
-	OutputDebugString(strOut.c_str());
+	PRINT_STREAM(strOutStream);
 }
 
 void CAlgorithm::Remove3(void)
@@ -270,8 +266,7 @@ void CAlgorithm::Remove3(void)
 	copy(coll.cbegin(), coll.cend(), ostream_iterator<int>(strOutStream, " "));
 	strOutStream << endl;
 
-	string strOut = strOutStream.str();
-	OutputDebugString(strOut.c_str());
+	PRINT_STREAM(strOutStream);
 }
 
 void CAlgorithm::Remove4(void)
@@ -296,4 +291,170 @@ void CAlgorithm::Remove4(void)
 	// remove all elements with value 4 (good performance)
 	coll.remove(4);
 	PRINT_ELEMENTS(coll);
+}
+
+// function that test the passed argument
+void TestValue(int elem)
+{
+	elem = elem;
+}
+
+void CAlgorithm::TestForEach(void)
+{
+	vector<int> coll;
+
+	// insert elements from 1 to 9
+	for(int i = 1; i <= 9; ++i) {
+		coll.push_back(i);
+	}
+
+	// test all elements
+	for_each(
+		coll.cbegin(), coll.cend(),  // range
+		TestValue);                  // operation
+
+	PRINT_ELEMENTS(coll);
+}
+
+int Square(int value)
+{
+	return value * value;
+}
+
+void CAlgorithm::TestTransform(void)
+{
+	set<int>    coll1;
+	vector<int> coll2;
+
+	// insert elements from 1 to 9 into coll1
+	for(int i = 1; i <= 9; ++i) {
+		coll1.insert(i);
+	}
+	PRINT_ELEMENTS(coll1, "initialized: ");
+
+	// transform each element from coll1 to coll2
+	// - square transformed values
+	transform(coll1.cbegin(), coll1.cend(),	// source
+		back_inserter(coll2),				// destination
+		Square);							// operation
+
+	PRINT_ELEMENTS(coll2, "squared:     ");
+}
+
+template <class Type>
+class MultValue
+{
+private:
+	Type Factor;   // The value to multiply by
+public:
+	// Constructor initializes the value to multiply by
+	MultValue(const Type& _Val) : Factor(_Val) {
+	}
+
+	// The function call for the element to be multiplied
+	Type operator () (Type& elem) const 
+	{
+		return elem * Factor;
+	}
+};
+
+void CAlgorithm::TestTransformMsdn()
+{
+	stringstream strOutStream;
+	vector <int> v1, v2(7), v3(7);
+	vector <int>::iterator Iter1, Iter2 , Iter3;
+
+	// Constructing vector v1
+	for(int i = -4; i <= 2; ++i)
+	{
+		v1.push_back(i);
+	}
+
+	strOutStream << "Original vector  v1 = ( " ;
+	for(Iter1 = v1.begin() ; Iter1 != v1.end() ; ++Iter1)
+	{
+		strOutStream << *Iter1 << " ";
+	}
+	strOutStream << ")." << endl;
+
+	// Modifying the vector v1 in place
+	transform(v1.begin(), v1.end(), v1.begin(), MultValue<int>(2));
+	strOutStream << "The elements of the vector v1 multiplied by 2 in place gives:" << "\n v1mod = ( " ;
+	for(Iter1 = v1.begin(); Iter1 != v1.end(); ++Iter1)
+	{
+		strOutStream << *Iter1 << " ";
+	}
+	strOutStream << ")." << endl;
+
+	// Using transform to multiply each element by a factor of 5
+	transform(v1.begin(), v1.end(), v2.begin(), MultValue<int>(5));
+	strOutStream << "Multiplying the elements of the vector v1mod\n " <<  "by the factor 5 & copying to v2 gives:\n v2 = ( " ;
+	for(Iter2 = v2.begin(); Iter2 != v2.end(); ++Iter2)
+	{
+		strOutStream << *Iter2 << " ";
+	}
+	strOutStream << ")." << endl;
+
+	// The second version of transform used to multiply the 
+	// elements of the vectors v1mod & v2 pairwise
+	transform(v1.begin(), v1.end(), v2.begin(), v3.begin(), multiplies<int>());
+	strOutStream << "Multiplying elements of the vectors v1mod and v2 pairwise " <<  "gives:\n v3 = ( " ;
+	for(Iter3 = v3.begin(); Iter3 != v3.end(); Iter3++)
+	{
+		strOutStream << *Iter3 << " ";
+	}
+	strOutStream << ")." << endl;
+
+	PRINT_STREAM(strOutStream);
+}
+
+// predicate, which returns whether an integer is a prime number
+bool isPrime(int number)
+{
+	// ignore negative sign
+	number = abs(number);
+
+	// 0 and 1 are no prime numbers
+	if(number == 0 || number == 1)
+	{
+		return false;
+	}
+
+	// find divisor that divides without a remainder
+	int divisor;
+	for(divisor = number / 2; number % divisor != 0; --divisor)
+	{
+		;
+	}
+
+	// if no divisor greater than 1 is found, it is a prime number
+	return divisor == 1;
+}
+
+void CAlgorithm::TestPredicate(void)
+{
+	list<int> coll;
+
+	// insert elements from 24 to 30
+	for(int i = 24; i <= 30; ++i) {
+		coll.push_back(i);
+	}
+
+	stringstream strOutStream;
+	// search for prime number
+	auto pos = find_if(
+		coll.cbegin(), coll.cend(),  // range
+		isPrime);                    // predicate
+	if(pos != coll.end())
+	{
+		// found
+		strOutStream << *pos << " is first prime number found" << endl;
+	}
+	else
+	{
+		// not found
+		strOutStream << "no prime number found" << endl;
+	}
+
+	PRINT_STREAM(strOutStream);
 }

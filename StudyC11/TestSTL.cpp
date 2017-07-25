@@ -19,6 +19,10 @@ CTestSTL::~CTestSTL(void)
 void CTestSTL::Test(void)
 {
 	CAlgorithm::Pointer pAlgorithm = CAlgorithm::Create();
+	pAlgorithm->TestPredicate();
+	pAlgorithm->TestTransform();
+	pAlgorithm->TestTransformMsdn();
+	pAlgorithm->TestForEach();
 	pAlgorithm->TestRemove();
 	pAlgorithm->TestCopy();
 	pAlgorithm->TestFind();

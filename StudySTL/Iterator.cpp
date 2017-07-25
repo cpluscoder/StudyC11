@@ -39,8 +39,7 @@ void CIterator::Test(void)
 	}
 	strOutStream << endl;
 
-	string strOut = strOutStream.str();
-	OutputDebugString(strOut.c_str());
+	PRINT_STREAM(strOutStream);
 }
 
 
@@ -82,8 +81,7 @@ void CIterator::TestSet(void)
 	}
 	strOutStream << endl;
 
-	string strOut = strOutStream.str();
-	OutputDebugString(strOut.c_str());
+	PRINT_STREAM(strOutStream);
 }
 
 void CIterator::TestUnOrderedSet(void)
@@ -118,8 +116,7 @@ void CIterator::TestUnOrderedSet(void)
 	}
 	strOutStream << std::endl;
 
-	string strOut = strOutStream.str();
-	OutputDebugString(strOut.c_str());
+	PRINT_STREAM(strOutStream);
 }
 
 void CIterator::InsertIter(void)
@@ -185,8 +182,7 @@ void CIterator::StreamIter(void)
 	unique_copy(coll.cbegin(), coll.cend(),   // source
 		ostream_iterator<string>(strOutStream/*cout*/, "\n")); // destination
 
-	string strOut = strOutStream.str();
-	OutputDebugString(strOut.c_str());
+	PRINT_STREAM(strOutStream);
 }
 
 void CIterator::ReverseIter(void)
@@ -205,8 +201,8 @@ void CIterator::ReverseIter(void)
 	copy(coll.crbegin(), coll.crend(),      // source
 		ostream_iterator<int>(strOutStream, " "));  // destination
 	strOutStream << endl;
-	string strOut = strOutStream.str();
-	OutputDebugString(strOut.c_str());
+
+	PRINT_STREAM(strOutStream);
 }
 
 void CIterator::MoveIter(void)

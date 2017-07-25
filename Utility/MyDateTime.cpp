@@ -16,7 +16,6 @@ CMyDateTime::~CMyDateTime(void)
 
 void CMyDateTime::Test(void)
 {
-	std::string strOut;
 	using std::endl;
 
 //////////////////////////////////////////////////////////////////////////
@@ -39,8 +38,7 @@ void CMyDateTime::Test(void)
 	//tp = boost::chrono::system_clock::time_point::max();
 	//strOutStream << "max:   " << timePoint2Str/*asString*/(tp) << std::endl;
 
-	strOut = strOutStream.str();
-	OutputDebugString(strOut.c_str());
+	PRINT_STREAM(strOutStream);
 	}
 
 
@@ -80,8 +78,7 @@ void CMyDateTime::Test(void)
 	timePoint -= boost::chrono::duration<int, boost::ratio<3600 * 24 * 365>>(50);
 	strOutStream << "-50 years: " << /*timePoint2Str*/asString(timePoint) << endl;
 
-	strOut = strOutStream.str();
-	OutputDebugString(strOut.c_str());
+	PRINT_STREAM(strOutStream);
 	}
 
 //////////////////////////////////////////////////////////////////////////
@@ -91,24 +88,20 @@ void CMyDateTime::Test(void)
 	strOutStream4 << timePoint2Str/*asString*/(tp1) << std::endl;
 	auto tp2 = makeTimePoint(2011, 05, 23, 13, 44);
 	strOutStream4 << timePoint2Str/*asString*/(tp2) << std::endl;
-	strOut = strOutStream4.str();
-	OutputDebugString(strOut.c_str());
+	PRINT_STREAM(strOutStream4);
 
 	std::stringstream strOutStream1;
 	strOutStream1 << "system_clock: " << std::endl;
-	strOut = strOutStream1.str();
-	OutputDebugString(strOut.c_str());
+	PRINT_STREAM(strOutStream1);
 	printClockData<boost::chrono::system_clock>();
 
 	std::stringstream strOutStream2;
 	strOutStream2 << "\nhigh_resolution_clock: " << std::endl;
-	strOut = strOutStream2.str();
-	OutputDebugString(strOut.c_str());
+	PRINT_STREAM(strOutStream2);
 	printClockData<boost::chrono::high_resolution_clock>();
 
 	std::stringstream strOutStream3;
 	strOutStream3 << "\nsteady_clock: " << std::endl;
-	strOut = strOutStream3.str();
-	OutputDebugString(strOut.c_str());
+	PRINT_STREAM(strOutStream3);
 	printClockData<boost::chrono::steady_clock>();
 }

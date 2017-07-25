@@ -50,18 +50,29 @@ protected:	\
 /************************************************************************/
 #define COUNT_OF(arr)   (sizeof(arr) / sizeof(arr[0]))
 
+#define PRINT_STREAM(strOutStream) 	{	\
+	std::string strOut = strOutStream.str();	\
+	OutputDebugString(strOut.c_str());	\
+	}
+
+
 template <typename T>
-inline void PRINT_ELEMENTS(const T& collection)
+inline void PRINT_ELEMENTS(const T& collection, const char *pszData = nullptr)
 {
 	std::stringstream strOutStream;
+
+	if(pszData != nullptr)
+	{
+		strOutStream << pszData;
+	}
+	
 	for(auto iter = collection.begin(); iter != collection.end(); ++iter)
 	{
 		strOutStream << *iter << ' ';
 	}
 	strOutStream << std::endl;
 
-	std::string strOut = strOutStream.str();
-	OutputDebugString(strOut.c_str());
+	PRINT_STREAM(strOutStream);
 }
 
 /************************************************************************/

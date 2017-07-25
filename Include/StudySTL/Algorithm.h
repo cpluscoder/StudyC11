@@ -27,10 +27,20 @@ public:
 	/// 使用迭代器访问容器的算法,不得通过迭代器访问容器自身提供的成员函数
 	void TestRemove(void);
 
+	void TestForEach(void);
+
+	void TestTransform(void);
+	void TestTransformMsdn(void);
+
+	void TestPredicate(void);
+
 protected:
 	void Remove1(void);
 	void Remove2(void);
 	void Remove3(void);
+
+	/// 算法提供了泛型的容器功能，但对于具体容器，不一定是最优的
+	/// 使用std::list最好不要使用算法提供的功能，特别是std::remove
 	void Remove4(void);
 
 protected:

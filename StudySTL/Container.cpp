@@ -67,9 +67,7 @@ void CContainer::TestVector(void)
 	}
 	strOutStream << std::endl;
 
-	std::string strOut;
-	strOut = strOutStream.str();
-	OutputDebugString(strOut.c_str());
+	PRINT_STREAM(strOutStream);
 }
 
 void CContainer::TestDeque(void)
@@ -90,9 +88,7 @@ void CContainer::TestDeque(void)
 	}
 	strOutStream << std::endl;
 
-	std::string strOut;
-	strOut = strOutStream.str();
-	OutputDebugString(strOut.c_str());
+	PRINT_STREAM(strOutStream);
 }
 
 void CContainer::TestArray(void)
@@ -106,9 +102,7 @@ void CContainer::TestArray(void)
 		strOutStream << i << ": " << coll[i] << std::endl;
 	}
 
-	std::string strOut;
-	strOut = strOutStream.str();
-	OutputDebugString(strOut.c_str());
+	PRINT_STREAM(strOutStream);
 }
 
 void CContainer::TestList(void)
@@ -128,9 +122,7 @@ void CContainer::TestList(void)
 	}
 	strOutStream << std::endl;
 
-	std::string strOut;
-	strOut = strOutStream.str();
-	OutputDebugString(strOut.c_str());
+	PRINT_STREAM(strOutStream);
 }
 
 void CContainer::TestForwardList(void)
@@ -153,9 +145,7 @@ void CContainer::TestForwardList(void)
 	}
 	strOutStream << std::endl;
 
-	std::string strOut;
-	strOut = strOutStream.str();
-	OutputDebugString(strOut.c_str());
+	PRINT_STREAM(strOutStream);
 }
 
 void CContainer::TestMultiSet(void)
@@ -191,9 +181,7 @@ void CContainer::TestMultiSet(void)
 	}
 	strOutStream << endl;
 
-	string strOut;
-	strOut = strOutStream.str();
-	OutputDebugString(strOut.c_str());
+	PRINT_STREAM(strOutStream);
 }
 
 void CContainer::TestMulteMap(void)
@@ -219,8 +207,8 @@ void CContainer::TestMulteMap(void)
 		strOutStream << elem->second << ' ';
 	}
 	strOutStream << endl;
-	string strOut = strOutStream.str();
-	OutputDebugString(strOut.c_str());
+
+	PRINT_STREAM(strOutStream);
 }
 
 void CContainer::TestUnorderedMultiSet(void)
@@ -255,8 +243,8 @@ void CContainer::TestUnorderedMultiSet(void)
 		strOutStream << *elem << "  ";
 	}
 	strOutStream << endl;
-	string strOut = strOutStream.str();
-	OutputDebugString(strOut.c_str());
+
+	PRINT_STREAM(strOutStream);
 }
 
 void CContainer::TestUnorderedMap(void)
@@ -278,8 +266,7 @@ void CContainer::TestUnorderedMap(void)
 		strOutStream << elem->first << ": " << elem->second << endl;
 	}
 
-	string strOut = strOutStream.str();
-	OutputDebugString(strOut.c_str());
+	PRINT_STREAM(strOutStream);
 }
 
 void CContainer::TestAssociativeArray(void)
@@ -308,6 +295,6 @@ void CContainer::TestAssociativeArray(void)
 	stringstream strOutStream;
 	// print difference of VAT values
 	strOutStream << "VAT difference: " << coll["VAT1"] - coll["VAT2"] << endl;
-	string strOut = strOutStream.str();
-	OutputDebugString(strOut.c_str());
+
+	PRINT_STREAM(strOutStream);
 }

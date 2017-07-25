@@ -121,7 +121,7 @@ void printClockData(void)
 		//OutputDebugString(strOut.c_str());
 	}
 	strOutStream << "- is_steady: " << std::boolalpha << C::is_steady << endl;
-	strOut = strOutStream.str();
-	OutputDebugString(strOut.c_str());
+
+	PRINT_STREAM(strOutStream);
 }
 
