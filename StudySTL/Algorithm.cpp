@@ -316,6 +316,8 @@ void CAlgorithm::TestForEach(void)
 	PRINT_ELEMENTS(coll);
 }
 
+//////////////////////////////////////////////////////////////////////////
+///	Transform(容器复制)
 int Square(int value)
 {
 	return value * value;
@@ -408,6 +410,8 @@ void CAlgorithm::TestTransformMsdn()
 	PRINT_STREAM(strOutStream);
 }
 
+//////////////////////////////////////////////////////////////////////////
+/// Predicate(判断表达式)
 // predicate, which returns whether an integer is a prime number
 bool isPrime(int number)
 {
@@ -458,3 +462,81 @@ void CAlgorithm::TestPredicate(void)
 
 	PRINT_STREAM(strOutStream);
 }
+
+//////////////////////////////////////////////////////////////////////////
+/// DoublePredicate(双参数判断表达式)
+class CPerson
+{
+public:
+	CPerson(void) {}
+	CPerson(const string& f, const string& n) : fn(f), ln(n) {}
+
+	string firstName() const { return fn; }
+	string lastName() const { return ln; }
+
+private:
+	string fn;    // first name
+	string ln;    // last name
+};
+
+ostream& operator<< (ostream& s, const CPerson& p)
+{
+    s << "[" << p.firstName() << " " << p.lastName() << "]";
+    return s;
+}
+
+
+/* binary function predicate:
+ * - returns whether a person is less than another person
+ */
+bool personSortCriterion(const CPerson& p1, const CPerson& p2)
+{
+    /* a person is less than another person
+     * - if the last name is less
+     * - if the last name is equal and the first name is less
+     */
+    return p1.lastName() < p2.lastName() || (p1.lastName() == p2.lastName() && p1.firstName() < p2.firstName());
+}
+
+void CAlgorithm::TestDoublePredicate(void)
+{
+    // create some persons
+    CPerson p1("nicolai", "josuttis");
+    CPerson p2("ulli", "josuttis");
+    CPerson p3("anica", "josuttis");
+    CPerson p4("lucas", "josuttis");
+    CPerson p5("lucas", "otto");
+    CPerson p6("lucas", "arm");
+    CPerson p7("anica", "holle");
+    
+    // insert person into collection coll
+    deque<CPerson> coll;
+    coll.push_back(p1);
+    coll.push_back(p2);
+    coll.push_back(p3);
+    coll.push_back(p4);
+    coll.push_back(p5);
+    coll.push_back(p6);
+    coll.push_back(p7);
+
+	stringstream strOutStream;
+    // print elements
+    strOutStream << "deque before sort():" << endl;
+    deque<CPerson>::iterator pos;
+    for(pos = coll.begin(); pos != coll.end(); ++pos) {
+        strOutStream << *pos << endl;
+    }
+
+    // sort elements
+    sort(coll.begin(),coll.end(),    // range
+         personSortCriterion);       // sort criterion
+
+    // print elements
+    strOutStream << "deque after sort():" << endl;
+    for(pos = coll.begin(); pos != coll.end(); ++pos) {
+        strOutStream << *pos << endl;
+    }
+
+	PRINT_STREAM(strOutStream);
+}
+

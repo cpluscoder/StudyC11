@@ -19,6 +19,7 @@ CTestSTL::~CTestSTL(void)
 void CTestSTL::Test(void)
 {
 	CAlgorithm::Pointer pAlgorithm = CAlgorithm::Create();
+	pAlgorithm->TestDoublePredicate();
 	pAlgorithm->TestPredicate();
 	pAlgorithm->TestTransform();
 	pAlgorithm->TestTransformMsdn();

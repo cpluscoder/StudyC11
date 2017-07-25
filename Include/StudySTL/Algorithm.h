@@ -27,12 +27,18 @@ public:
 	/// 使用迭代器访问容器的算法,不得通过迭代器访问容器自身提供的成员函数
 	void TestRemove(void);
 
+	/// 遍历容器
 	void TestForEach(void);
 
+	/// 容器复制
 	void TestTransform(void);
 	void TestTransformMsdn(void);
 
+	/// 判断表达式
 	void TestPredicate(void);
+
+	/// 双参数判断表达式
+	void TestDoublePredicate(void);
 
 protected:
 	void Remove1(void);
