@@ -7,11 +7,11 @@ class CTestSTL
 	DEFINE_BOOST_SHARED_PTR(CTestSTL)
 public:
 	
-	virtual ~CTestSTL(void);
+	virtual ~CTestSTL(void) {}
 
 	void Test(void);
 
 protected:
-	explicit CTestSTL(void);
+	explicit CTestSTL(void) {}
 };
 

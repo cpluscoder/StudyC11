@@ -27,15 +27,10 @@ CTestUtility::CTestUtility(void)
 }
 
 
-CTestUtility::~CTestUtility(void)
-{
-}
-
 bool CTestUtility::Test(void)
 {
 	CMyDateTime::Pointer pMyDateTime = CMyDateTime::Create();
 	pMyDateTime->Test();
-
 
 	CUtility::Pointer pUtility = CUtility::Create();
 	pUtility->TestAuto();
@@ -52,7 +47,6 @@ bool CTestUtility::Test(void)
 	CMyFunction::Pointer pMyFunction = CMyFunction::Create();
 	pMyFunction->Test();
 	pMyFunction->TestFunctional();
-
 
 	nullptrTest();
 

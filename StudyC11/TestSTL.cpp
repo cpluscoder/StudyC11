@@ -7,14 +7,6 @@
 #pragma comment(lib, "StudySTL.lib")
 
 
-CTestSTL::CTestSTL(void)
-{
-}
-
-
-CTestSTL::~CTestSTL(void)
-{
-}
 
 void CTestSTL::Test(void)
 {

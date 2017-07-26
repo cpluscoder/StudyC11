@@ -7,19 +7,16 @@ class CTestUtility
 	DEFINE_BOOST_SHARED_PTR(CTestUtility)
 public:
 
-	virtual ~CTestUtility(void);
+	virtual ~CTestUtility(void) {}
 
 	bool Test(void);
+
+protected:
+	explicit CTestUtility(void);
 
 	void nullptrTest(void);
 
 	void TestSmartPtr(void);
-
-protected:
-	explicit CTestUtility(void);
 };
 
-class CTestUtilityChild : public CTestUtility
-{
-
-};
+class CTestUtilityChild : public CTestUtility {};

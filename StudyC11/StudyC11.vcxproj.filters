@@ -45,6 +45,9 @@
     <ClInclude Include="TestSTL.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="TestStlContainer.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="StudyC11.cpp">
@@ -60,6 +63,9 @@
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="TestSTL.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="TestStlContainer.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>
