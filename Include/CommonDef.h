@@ -54,7 +54,8 @@ protected:	\
 #define PRINT_STREAM(strOutStream) 	{	\
 	std::string strOut = strOutStream.str();	\
 	OutputDebugString(strOut.c_str());	\
-	}
+	strOutStream = std::stringstream();	\
+}
 
 
 template <typename T>
