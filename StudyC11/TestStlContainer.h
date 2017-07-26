@@ -11,7 +11,6 @@ public:
 
 	void Test(void);
 
-
 protected:
 	explicit CTestStlContainer(void) {}
 };

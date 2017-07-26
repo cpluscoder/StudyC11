@@ -11,6 +11,8 @@ public:
 
 	void Test(void);
 
+	void TestArray(void);
+
 protected:
 	explicit CMyArray(void);
 };

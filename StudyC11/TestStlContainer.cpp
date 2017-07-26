@@ -10,6 +10,7 @@ using namespace std;
 void CTestStlContainer::Test(void)
 {
 	CMyArray::Pointer pMyArray = CMyArray::Create();
+	pMyArray->TestArray();
 	pMyArray->Test();
 }
 
