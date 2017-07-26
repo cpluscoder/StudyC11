@@ -1,7 +1,6 @@
 #include "StdAfx.h"
 #include <StudySTL/Container.h>
 #include <deque>
-#include <array>
 #include <list>
 #include <forward_list>
 #include <set>

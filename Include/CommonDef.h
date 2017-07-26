@@ -1,6 +1,7 @@
 #pragma once
 
 #include <string>
+#include <array>
 #include <map>
 #include <vector>
 #include <tuple>
@@ -74,6 +75,17 @@ inline void PRINT_ELEMENTS(const T& collection, const char *pszData = nullptr)
 
 	PRINT_STREAM(strOutStream);
 }
+
+template <typename T1, typename T2>
+inline void CopySrcToDst(const T1& src, T2& dst)
+{
+	dst.clear();
+	for(auto iter = src.begin(); iter != src.end(); ++iter)
+	{
+		dst.push_back(*iter);
+	}
+}
+
 
 /************************************************************************/
 /* 定义常量                                                             */

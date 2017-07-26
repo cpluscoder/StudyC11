@@ -1,6 +1,5 @@
 #include "StdAfx.h"
 #include <Utility/Utility.h>
-#include <tuple>
 
 using namespace std;
 
