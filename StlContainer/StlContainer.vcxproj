@@ -87,6 +87,7 @@
   <ItemGroup>
     <ClInclude Include="..\Include\StlContainer\MyArray.h" />
     <ClInclude Include="..\Include\StlContainer\MyDeque.h" />
+    <ClInclude Include="..\Include\StlContainer\MyList.h" />
     <ClInclude Include="..\Include\StlContainer\MyVector.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
@@ -94,6 +95,7 @@
   <ItemGroup>
     <ClCompile Include="MyArray.cpp" />
     <ClCompile Include="MyDeque.cpp" />
+    <ClCompile Include="MyList.cpp" />
     <ClCompile Include="MyVector.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
