@@ -2,6 +2,7 @@
 #include "TestStlContainer.h"
 #include <StlContainer/MyArray.h>
 #include <StlContainer/MyVector.h>
+#include <StlContainer/MyDeque.h>
 
 #pragma comment(lib, "StlContainer.lib")
 
@@ -10,6 +11,9 @@ using namespace std;
 
 void CTestStlContainer::Test(void)
 {
+	CMyDeque::Pointer pMyDeque = CMyDeque::Create();
+	pMyDeque->Test();
+
 	CMyVector::Pointer pMyVector = CMyVector::Create();
 	pMyVector->Test();
 
