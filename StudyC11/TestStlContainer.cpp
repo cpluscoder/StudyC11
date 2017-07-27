@@ -6,6 +6,7 @@
 #include <StlContainer/MyList.h>
 #include <StlContainer/MyForwardList.h>
 #include <StlContainer/MySet.h>
+#include <StlContainer/MyMap.h>
 
 #pragma comment(lib, "StlContainer.lib")
 
@@ -14,6 +15,13 @@ using namespace std;
 
 void CTestStlContainer::Test(void)
 {
+	CMyMap::Pointer pMyMap = CMyMap::Create();
+	pMyMap->TestRunTimeCmp();
+	pMyMap->TestFindIf();
+	pMyMap->TestMultiMap();
+	pMyMap->TestSubScript();
+	pMyMap->TestLambda();
+
 	CMySet::Pointer pMySet = CMySet::Create();
 	pMySet->TestRunTimeCompare();
 	pMySet->TestMultiSet();

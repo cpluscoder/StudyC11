@@ -89,6 +89,7 @@
     <ClInclude Include="..\Include\StlContainer\MyDeque.h" />
     <ClInclude Include="..\Include\StlContainer\MyForwardList.h" />
     <ClInclude Include="..\Include\StlContainer\MyList.h" />
+    <ClInclude Include="..\Include\StlContainer\MyMap.h" />
     <ClInclude Include="..\Include\StlContainer\MyVector.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
@@ -98,6 +99,7 @@
     <ClCompile Include="MyDeque.cpp" />
     <ClCompile Include="MyForwardList.cpp" />
     <ClCompile Include="MyList.cpp" />
+    <ClCompile Include="MyMap.cpp" />
     <ClCompile Include="MySet.cpp" />
     <ClCompile Include="MyVector.cpp" />
     <ClCompile Include="stdafx.cpp">
