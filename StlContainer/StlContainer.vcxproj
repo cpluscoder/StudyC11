@@ -98,6 +98,7 @@
     <ClCompile Include="MyDeque.cpp" />
     <ClCompile Include="MyForwardList.cpp" />
     <ClCompile Include="MyList.cpp" />
+    <ClCompile Include="MySet.cpp" />
     <ClCompile Include="MyVector.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>

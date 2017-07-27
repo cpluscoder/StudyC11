@@ -5,6 +5,7 @@
 #include <StlContainer/MyDeque.h>
 #include <StlContainer/MyList.h>
 #include <StlContainer/MyForwardList.h>
+#include <StlContainer/MySet.h>
 
 #pragma comment(lib, "StlContainer.lib")
 
@@ -13,6 +14,12 @@ using namespace std;
 
 void CTestStlContainer::Test(void)
 {
+	CMySet::Pointer pMySet = CMySet::Create();
+	pMySet->TestRunTimeCompare();
+	pMySet->TestMultiSet();
+	pMySet->TestSet();
+	pMySet->TestSetBound();
+
 	CMyForwardList::Pointer pMyForwardList = CMyForwardList::Create();
 	pMyForwardList->TestSplice();
 	pMyForwardList->Test();
