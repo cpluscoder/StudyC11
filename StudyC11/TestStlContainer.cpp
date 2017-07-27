@@ -4,6 +4,7 @@
 #include <StlContainer/MyVector.h>
 #include <StlContainer/MyDeque.h>
 #include <StlContainer/MyList.h>
+#include <StlContainer/MyForwardList.h>
 
 #pragma comment(lib, "StlContainer.lib")
 
@@ -12,6 +13,10 @@ using namespace std;
 
 void CTestStlContainer::Test(void)
 {
+	CMyForwardList::Pointer pMyForwardList = CMyForwardList::Create();
+	pMyForwardList->TestSplice();
+	pMyForwardList->Test();
+
 	CMyList::Pointer pMyList = CMyList::Create();
 	pMyList->Test();
 

@@ -87,6 +87,7 @@
   <ItemGroup>
     <ClInclude Include="..\Include\StlContainer\MyArray.h" />
     <ClInclude Include="..\Include\StlContainer\MyDeque.h" />
+    <ClInclude Include="..\Include\StlContainer\MyForwardList.h" />
     <ClInclude Include="..\Include\StlContainer\MyList.h" />
     <ClInclude Include="..\Include\StlContainer\MyVector.h" />
     <ClInclude Include="stdafx.h" />
@@ -95,6 +96,7 @@
   <ItemGroup>
     <ClCompile Include="MyArray.cpp" />
     <ClCompile Include="MyDeque.cpp" />
+    <ClCompile Include="MyForwardList.cpp" />
     <ClCompile Include="MyList.cpp" />
     <ClCompile Include="MyVector.cpp" />
     <ClCompile Include="stdafx.cpp">
