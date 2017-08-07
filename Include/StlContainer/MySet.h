@@ -17,6 +17,8 @@ public:
 
 	void TestRunTimeCompare(void);
 
+	void TestRefSharedPtr(void);
+
 protected:
 	explicit CMySet(void) {}
 };

@@ -1,6 +1,7 @@
 #include "StdAfx.h"
 #include <set>
 #include <StlContainer/MySet.h>
+#include <deque>
 
 using namespace std;
 
@@ -205,4 +206,116 @@ void CMySet::TestRunTimeCompare(void)
 		strOutStream << "coll1 and coll2 have a different sorting criterion" << endl;
 	}
 	PRINT_STREAM(strOutStream);
+}
+
+
+
+
+class CItem
+{
+public:
+	explicit CItem(const std::string& n, double p = 0) : name(n), price(p) {}
+	virtual ~CItem(void) {}
+
+	std::string getName() const { return name; }
+	void setName(const std::string& n) { name = n; }
+
+	double getPrice() const { return price;	}
+	void setPrice(double p) { price = p; }
+
+private:
+	std::string name;
+	double price;
+};
+
+typedef shared_ptr<CItem> CItemPtr;
+void printItems(const std::string& msg, deque<CItemPtr>& coll)
+{
+	std::stringstream strOutStream;
+	strOutStream << msg << std::endl;
+	for(auto& elem = coll.begin(); elem != coll.end(); ++elem)
+	{
+		strOutStream << ' ' << (*elem)->getName() << ": " << (*elem)->getPrice() << std::endl;
+	}
+	PRINT_STREAM(strOutStream);
+}
+
+void printItems(const std::string& msg, const set<CItemPtr>& coll)
+{
+	std::stringstream strOutStream;
+	strOutStream << msg << std::endl;
+	for(auto& elem = coll.begin(); elem != coll.end(); ++elem)
+	{
+		strOutStream << ' ' << (*elem)->getName() << ": " << (*elem)->getPrice() << std::endl;
+	}
+	PRINT_STREAM(strOutStream);
+}
+
+void CMySet::TestRefSharedPtr(void)
+{
+	stringstream strOutStream;
+
+	// two different collections sharing Items
+	
+	set<CItemPtr> allItems;
+	deque<CItemPtr> dequeBestSellers;
+
+	// insert objects into the collections
+	// - dequeBestSellers are in both collections
+	//dequeBestSellers = {
+	//	CItemPtr(new CItem("Kong Yize", 20.10)),
+	//	CItemPtr(new CItem("A Midsummer Night's Dream", 14.99)),
+	//	CItemPtr(new CItem("The Maltese Falcon", 9.88))
+	//};
+	array<CItemPtr, 3> itemArray1 = {
+		CItemPtr(new CItem("Kong Yize", 20.10)),
+		CItemPtr(new CItem("A Midsummer Night's Dream", 14.99)),
+		CItemPtr(new CItem("The Maltese Falcon", 9.88))
+	};
+	//dequeBestSellers.insert(itemArray1.begin(), itemArray1.end());
+	for(auto iter = itemArray1.begin(); iter != itemArray1.end(); ++iter)
+	{
+		dequeBestSellers.push_back(*iter);
+	}
+
+	//allItems = {
+	//	CItemPtr(new CItem("Water", 0.44)),
+	//	CItemPtr(new CItem("Pizza", 2.22))
+	//};
+	array<CItemPtr, 2> itemArray2 = {
+		CItemPtr(new CItem("Water", 0.44)),
+		CItemPtr(new CItem("Pizza", 2.22))
+	};
+	allItems.insert(itemArray2.begin(), itemArray2.end());
+	allItems.insert(dequeBestSellers.begin(), dequeBestSellers.end());
+
+	// print contents of both collections
+	printItems("BestSellers:", dequeBestSellers);
+	printItems("all:", allItems);
+	strOutStream << endl;
+
+	// double price of bestsellers
+	for_each(
+		dequeBestSellers.begin(), dequeBestSellers.end(),
+		[] (shared_ptr<CItem>& elem)
+		{
+			elem->setPrice(elem->getPrice() * 2);
+		}
+	);
+
+	// replace second bestseller by first item with name "Pizza"
+	dequeBestSellers[1] = *(find_if(
+		allItems.begin(), allItems.end(),
+		[] (shared_ptr<CItem> elem)
+		{
+			return elem->getName() == "Pizza";
+		}
+	));
+
+	// set price of first bestseller
+	dequeBestSellers[0]->setPrice(44.77);
+
+	// print contents of both collections
+	printItems("BestSellers:", dequeBestSellers);
+	printItems("all:", allItems);
 }

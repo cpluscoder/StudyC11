@@ -30,6 +30,7 @@ void CTestStlContainer::Test(void)
 	pMyMap->TestLambda();
 
 	CMySet::Pointer pMySet = CMySet::Create();
+	pMySet->TestRefSharedPtr();
 	pMySet->TestRunTimeCompare();
 	pMySet->TestMultiSet();
 	pMySet->TestSet();
