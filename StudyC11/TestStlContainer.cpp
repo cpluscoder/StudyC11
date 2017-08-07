@@ -7,6 +7,7 @@
 #include <StlContainer/MyForwardList.h>
 #include <StlContainer/MySet.h>
 #include <StlContainer/MyMap.h>
+#include <StlContainer/UnOrderedSetAndMap.h>
 
 #pragma comment(lib, "StlContainer.lib")
 
@@ -15,6 +16,12 @@ using namespace std;
 
 void CTestStlContainer::Test(void)
 {
+	CUnOrderedSetAndMap::Pointer pUnOrderedSetAndMap = CUnOrderedSetAndMap::Create();
+	pUnOrderedSetAndMap->UnOrdMultiMap();
+	pUnOrderedSetAndMap->UnOrdInspect();
+	pUnOrderedSetAndMap->TestUnOrderedMultiSet();
+	pUnOrderedSetAndMap->TestUnOrderedSet();
+
 	CMyMap::Pointer pMyMap = CMyMap::Create();
 	pMyMap->TestRunTimeCmp();
 	pMyMap->TestFindIf();
